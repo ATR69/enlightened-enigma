@@ -1,9 +1,9 @@
 import sys
-import numpy
+import numpy as np
 from keras.models import Sequential, load_model
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
 from keras.layers import TimeDistributed
-from keras.utils import np_utils
+from keras.utils import numpy as np_utils
 from keras.callbacks import ModelCheckpoint
 from keras.preprocessing.sequence import pad_sequences
 from keras.optimizers import RMSprop
@@ -12,7 +12,7 @@ import pickle
 import heapq
 
 
-numpy.random.seed(47)
+np.random.seed(47)
 
 model = load_model('keras_model.h5')
 history = pickle.load(open("history.p", "rb"))
@@ -36,10 +36,10 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 def prepare_input(test):
 
 	x = [char_to_int[t] for t in test[0]]
-	y = numpy.zeros((sequence_len, 1))
+	y = np.zeros((sequence_len, 1))
 	y[0:len(test[0]),0] = x
 	x = y / float(len(chars))
-	x = numpy.reshape(x,(1,sequence_len,1))
+	x = np.reshape(x,(1,sequence_len,1))
 	return x
 
 def sample(preds, top_n=3):
