@@ -37,7 +37,7 @@ def prepare_input(test):
 
 	x = [char_to_int[t] for t in test[0]]
 	y = numpy.zeros((sequence_len, 1))
-	y[0:len(test[0])] = x
+	y[0:len(test[0]),0] = x
 	x = y / float(len(chars))
 	return x
 
