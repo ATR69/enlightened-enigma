@@ -20,7 +20,7 @@ history = pickle.load(open("history.p", "rb"))
 sequence_len = 30
 
 text = sys.argv[1:]
-text = ''.join(str(e) for e in text)
+#text = ''.join(str(e) for e in text)
 print text
 
 path = "new_cup.txt"
