@@ -27,7 +27,7 @@ path = "new_cup.txt"
 rawtxt = open(path).read().lower()
 
 chars = sorted(list(set(rawtxt)))
-char_to_int = dict((c, i) for i, c in enumerate(chars))
+int_to_char = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 #print"Unique Chars: ", len(chars)
@@ -35,7 +35,7 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 def prepare_input(test):
 
-	x = [char_to_int[t] for t in test[0]]
+	x = [int_to_char[t] for t in test[0]]
 	y = np.zeros((sequence_len, 1))
 	y[0:len(test[0]),0] = x
 	x = y / float(len(chars))
@@ -61,7 +61,7 @@ def predict_completion(text):
 		x = prepare_input(text)
 		preds = model.predict(x, verbose=0)[0]
 		next_index = sample(preds, top_n=1)[0]
-		next_char = char_to_int[next_index]
+		next_char = int_to_char[next_index]
 		text = text[1:] + next_char
 		completion += next_char
 		
@@ -74,9 +74,9 @@ def predict_completions(text, n=3):
 	preds = model.predict(x, verbose=0)[0]
 	next_indices = sample(preds, n)
 	print next_indices
-	r=[char_to_int[idx] + predict_completion(text[1:] + char_to_int[idx]) for idx in next_indices]
+	r=[int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
 	print r
-	return [char_to_int[idx] + predict_completion(text[1:] + char_to_int[idx]) for idx in next_indices]
+	return [int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
 	
 print(text)
 print(predict_completions(text, 3))
