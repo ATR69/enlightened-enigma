@@ -17,10 +17,10 @@ numpy.random.seed(47)
 model = load_model('keras_model.h5')
 history = pickle.load(open("history.p", "rb"))
 
+sequence_len = 30
+
 text = sys.argv[1:]
-type (text)
-input()
-text = text.lower()
+text = pad_sequences(text, padding = 'post', maxlen = 'sequence_len')
 
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
@@ -31,8 +31,6 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 #print"Unique Chars: ", len(chars)
 #print "Raw Data: ", len(rawtxt)
-
-sequence_len = 30
 
 def prepare_input(test):
 
