@@ -20,7 +20,7 @@ history = pickle.load(open("history.p", "rb"))
 sequence_len = 30
 
 text = sys.argv[1:]
-text = pad_sequences(text, padding = 'post', maxlen = 'sequence_len')
+text = pad_sequences(text, padding = 'post', maxlen = sequence_len)
 
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
