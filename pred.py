@@ -35,7 +35,7 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 def prepare_input(test):
 
-	x = [char_to_int[t] for t in test]
+	x = [char_to_int[t] for t in test[0]]
 	y = numpy.zeros((sequence_len, 1))
 	y[0:len(test)] = x
 	x = y / float(len(chars))
