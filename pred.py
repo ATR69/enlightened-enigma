@@ -35,9 +35,10 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 def prepare_input(test):
 
-	x = numpy.array(test)
-	x = numpy.reshape(x, (len(test), sequence_len, 1))
-	x = x / float(len(chars))
+    x = [char_to_int(t) for t in test]
+	y = numpy.zeros((sequence_len, 1))
+    y[0:len(test)] = x
+	x = y / float(len(chars))
 	return x
 
 def sample(preds, top_n=3):
