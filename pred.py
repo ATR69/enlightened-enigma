@@ -39,6 +39,7 @@ def prepare_input(test):
 	y = numpy.zeros((sequence_len, 1))
 	y[0:len(test[0]),0] = x
 	x = y / float(len(chars))
+	x = numpy.reshape(x,(1,sequence_len,1))
 	return x
 
 def sample(preds, top_n=3):
