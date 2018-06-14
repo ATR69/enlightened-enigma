@@ -28,12 +28,13 @@ chars = sorted(list(set(rawtxt)))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
 
-def prepare_input(test):
+def prepare_input(text):
 
 	x = np.zeros((1, sequence_len, len(chars)))
 	
-	for t, char in enumerate(test):
-        x[0, t, char_to_int[char]] = 1.        
+	for t, char in enumerate(text):
+
+		x[0, t, char_to_int[char]] = 1.        
    	
    	return x
 
@@ -49,8 +50,8 @@ def sample(preds, top_n=3):
 	return heapq.nlargest(top_n, range(len(preds)), preds.take)
 	
 	
-def predict_completion(text):
-
+def predict_completion(text)
+:
 	original_text = text
 	generated = text
 	completion = ''
