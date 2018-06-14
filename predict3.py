@@ -63,4 +63,4 @@ for epoch in range(100):
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
-pickle.dump(history, open("history.p", "wb"))
+pickle.dump(history, open("history1.p", "wb"))

@@ -32,8 +32,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for i in range(len(rawtxt) - 1, sequence_len, step):
 		
-		seq_in = rawtxt[i : i + sequence_len]
-		seq_out = rawtxt[i+1 : i + sequence_len+1]
+		seq_in = rawtxt[i - sequence_len : i]
+		seq_out = rawtxt[i - sequence_len - 1 : i - 1]
 		datax.append([char_to_int[char] for char in seq_in])
 		datay.append([char_to_int[char] for char in seq_out])
 
@@ -50,19 +50,19 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
 #print (x.shape, '\n', y.shape)
-model = Sequential()
-model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
-model.add(Dropout(0.2))
-model.add(Dense(len(chars),activation = 'softmax'))
-model.summary()
-model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+model1 = Sequential()
+model1.add(Bidirectional(LSTM(256, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
+model1.add(Dropout(0.2))
+model1.add(Dense(len(chars),activation = 'softmax'))
+model1.summary()
+model1.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
 
 for epoch in range(100):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 1, callbacks = callbacks_list).history
+	history = model1.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 1, callbacks = callbacks_list).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model2.h5')
-pickle.dump(history, open("history.p", "wb"))
+pickle.dump(history, open("history2.p", "wb"))
