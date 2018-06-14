@@ -28,8 +28,8 @@ rawtxt = open(path).read().lower()
 
 chars = sorted(list(set(rawtxt)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
-int_to_char = dict((c, i) for i, c in enumerate(chars))
-
+int_to_char = dict((i, c) for i, c in enumerate(chars))
+print char_to_int
 def prepare_input(text):
 
 	# for i in range(sequence_len):
