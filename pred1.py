@@ -50,8 +50,7 @@ def sample(preds, top_n=3):
 	return heapq.nlargest(top_n, range(len(preds)), preds.take)
 	
 	
-def predict_completion(text)
-:
+def predict_completion(text):
 	original_text = text
 	generated = text
 	completion = ''
