@@ -89,6 +89,7 @@ def predict_completions(text, n=3):
 	preds = model.predict(x, verbose=0)[0]
 	next_indices = sample(preds, n)
 	print next_indices
+	print (int_to_char[idx] for idx in next_indices)
 	r=[int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
 	print r
 	return [int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
