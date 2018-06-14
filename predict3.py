@@ -22,32 +22,29 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
-sequence_len = 40
+sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = 3
+	step = 6
 	datax = []
 	datay = []
 
 	for i in range( 0, len(rawtxt) - sequence_len - 1, step):
 		
-		#seq_in = rawtxt[i : i + sequence_len]
-		#seq_out = rawtxt[i+1 : i + sequence_len+1]
-		datax.append(rawtxt[i : i + sequence_len])
-		datay.append(rawtxt[i+1 : i + sequence_len+1])
+		seq_in = rawtxt[i : i + sequence_len]
+		seq_out = rawtxt[i+1 : i + sequence_len+1]
+		datax.append([char_to_int[char] for char in seq_in])
+		datay.append([char_to_int[char] for char in seq_out])
 
-	#n_patterns = len(datax)
+	n_patterns = len(datax)
 	
-	#print ("Total Pattern : ", n_patterns)
+	print ("Total Pattern : ", n_patterns)
 
-x = np.zeros((len(datax), sequence_len, len(chars)), dtype=np.bool)
-y = np.zeros((len(datax), len(chars)), dtype=np.bool)
+	x = np_utils.to_categorical(datax)
 
-for i, sentence in enumerate(datax):
-    for t, char in enumerate(sentence):
-        x[i, t, char_to_int[char]] = 1
-    y[i, char_to_int[datay[i]] = 1
+
+	y = np_utils.to_categorical(datay)
 
 	return x, y
 
@@ -67,7 +64,7 @@ callbacks_list = [checkpoint]
 for epoch in range(10):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 500, callbacks = callbacks_list).history
+	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 200, callbacks = callbacks_list).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
