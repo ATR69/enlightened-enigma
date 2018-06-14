@@ -38,7 +38,7 @@ def prepare_input(text):
 
 	x = np_utils.to_categorical(datax)
 
-	x = numpy.reshape(x, (1, sequence_len, len(chars)))
+	x = np.reshape(x, (1, sequence_len, len(chars)))
 
 	return x
 
