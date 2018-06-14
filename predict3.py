@@ -26,7 +26,7 @@ sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = 5
+	step = 4
 	datax = []
 	datay = []
 
@@ -64,7 +64,7 @@ callbacks_list = [checkpoint]
 for epoch in range(10):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 500, callbacks = callbacks_list).history
+	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 200, callbacks = callbacks_list).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
