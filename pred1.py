@@ -87,4 +87,4 @@ def predict_completions(text, n=3):
 	print r
 	return [int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
 	
-print(predict_completions(text, 3))
+print(predict_completions(t, 3))
