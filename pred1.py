@@ -32,70 +32,49 @@ char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((i, c) for i, c in enumerate(chars))
 
 def prepare_input(text):
-
-	# for i in range(sequence_len):
-
-	# 	seq_in[i] = text[i]
-	# 	datax.append([char_to_int[char] for char in seq_in])
-
-	# x = np_utils.to_categorical(datax)
+    x = np.zeros((1, SEQUENCE_LENGTH, len(char_indices)))
+    for t, char in enumerate(text):
+        x[0, t, char_indices[char]] = 1.        
+    return x
 	
-	#x = np.reshape(x, (1, sequence_len, len(chars)))
-
-	x = np.zeros((1, sequence_len, len(chars)))
-
-	for k in range(len(t)):
-			
-		x[0, k, char_to_int[t[k]]] = 1
-	
-   	return x
-
-
 
 def sample(preds, top_n=3):
-
-	preds = np.asarray(preds).astype('float64')
-	preds = np.log(preds)
-	exp_preds = np.exp(preds)
-	preds = exp_preds / np.sum(exp_preds)
-	
-	return heapq.nlargest(top_n, range(len(preds)), preds.take)
+    preds = np.asarray(preds).astype('float64')
+    preds = np.log(preds)
+    exp_preds = np.exp(preds)
+    preds = exp_preds / np.sum(exp_preds)
+    
+    return heapq.nlargest(top_n, range(len(preds)), preds.take)
 	
 	
 def predict_completion(text):
-
-	print text
-	original_text = text
-	print original_text
-	generated = text
-	completion = ''
-
-	while True:
-
-		x = prepare_input(text)
-		preds = model.predict(x, verbose=0)[0]
-		next_index = sample(preds, top_n=1)[0]
-		#print next_index
-		next_char = int_to_char[next_index]
-		#print next_char
-		text = text[1:] + next_char
-		print text
-		completion += next_char
-
-		
-		if len(original_text + completion) + 2 > len(original_text) and next_char == ' ':
-			return completion
+    original_text = text
+    generated = text
+    completion = ''
+    while True:
+        x = prepare_input(text)
+        preds = model.predict(x, verbose=0)[0]
+        next_index = sample(preds, top_n=1)[0]
+        next_char = indices_char[next_index]
+        text = text[1:] + next_char
+        completion += next_char
+        
+        if len(original_text + completion) + 2 > len(original_text) and (next_char == ' ' or next_char == '\n'):
+            return completion
 			
 def predict_completions(text, n=3):
-
-	x = prepare_input(text)
-	#print "Input Prepared"
-	preds = model.predict(x, verbose=0)[0]
-	next_indices = sample(preds, n)
-	print next_indices
-	print (int_to_char[idx] for idx in next_indices)
-	r=[int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
-	print r
-	return [int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
+    x = prepare_input(text)
+    preds = model.predict(x, verbose=0)[0]
+    next_indices = sample(preds, n)
+    r=[indices_char[idx] + predict_completion(text[1:] + indices_char[idx]) for idx in next_indices]
+    return [indices_char[idx] + predict_completion(text[1:] + indices_char[idx]) for idx in next_indices]
 	
-print(predict_completions(t, 3))
+res = print(predict_completions(t, 3))
+
+ret=[]
+
+for i in res:
+    k=q+i
+    ret.append(k)
+    
+print ret
