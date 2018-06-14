@@ -57,7 +57,7 @@ model1.add(Dense(len(chars),activation = 'softmax'))
 model1.summary()
 model1.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
-filepath = "wt-imp.hdf5"
+filepath = "wt-imp2.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 

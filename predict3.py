@@ -22,7 +22,7 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
-sequence_len = 50
+sequence_len = 40
 
 def get_sequence(rawtxt, chars, sequence_len):
 
@@ -57,7 +57,7 @@ model.add(Dense(len(chars),activation = 'softmax'))
 model.summary()
 model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
-filepath = "wt-imp.hdf5"
+filepath = "wt-imp1.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
