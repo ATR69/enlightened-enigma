@@ -34,7 +34,7 @@ def prepare_input(text):
 	for i in range(len(text)):
 
 		seq_in = text[i]
-		datax.append[[char_to_int[char] for char in seq_in]]
+		datax.append([char_to_int[char] for char in seq_in])
 
 	x = np_utils.to_categorical(datax)
 
