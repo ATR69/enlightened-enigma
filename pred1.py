@@ -19,7 +19,7 @@ history = pickle.load(open("history.p", "rb"))
 
 sequence_len = 30
 datax = []
-seq_in = [30]
+#seq_in = [30]
 
 text = sys.argv[1:]
 
@@ -32,24 +32,22 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 def prepare_input(text):
 
-	for i in range(sequence_len):
+	# for i in range(sequence_len):
 
-		seq_in[i] = text[i]
-		datax.append([char_to_int[char] for char in seq_in])
+	# 	seq_in[i] = text[i]
+	# 	datax.append([char_to_int[char] for char in seq_in])
 
-	x = np_utils.to_categorical(datax)
-
+	# x = np_utils.to_categorical(datax)
+	
 	#x = np.reshape(x, (1, sequence_len, len(chars)))
 
-	return x
-
-	# x = np.zeros((1, sequence_len, len(chars)))
+	x = np.zeros((1, sequence_len, len(chars)))
 	
-	# for t, char in enumerate(text):
+	for t, char in enumerate(text):
 
-	# 	x[0, t, char_to_int[char]] = 1.        
+		x[0, t, char_to_int[char]] = 1.        
    	
- #   	return x
+   	return x
 
 
 
