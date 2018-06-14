@@ -44,7 +44,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 x = np.zeros((len(datax), sequence_len, len(chars)), dtype=np.bool)
 y = np.zeros((len(datax), len(chars)), dtype=np.bool)
 
-for i, sentence in enumerate(sentences):
+for i, sentence in enumerate(datax):
     for t, char in enumerate(sentence):
         x[i, t, char_to_int[char]] = 1
     y[i, char_to_int[datay[i]] = 1
