@@ -62,7 +62,7 @@ checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_
 callbacks_list = [checkpoint]
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
-history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 10, callbacks = callbacks_list).history
+history = model.fit(x, y, epochs = 2, validation_split = 0.05,  batch_size = 1000, callbacks = callbacks_list).history
 #model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
