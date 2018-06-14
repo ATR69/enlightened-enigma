@@ -21,7 +21,8 @@ sequence_len = 30
 #datax = []
 #seq_in = [30]
 
-text = "cup"
+t = "cup"
+#text = ''.join(t)
 
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
@@ -42,7 +43,8 @@ def prepare_input(text):
 	#x = np.reshape(x, (1, sequence_len, len(chars)))
 
 	x = np.zeros((1, sequence_len, len(chars)))
-	for t, char in enumerate(text):
+
+	for t, char in (t):
 			
 		x[0, t, char_to_int[char]] = 1.        
    	
