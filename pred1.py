@@ -19,6 +19,7 @@ history = pickle.load(open("history.p", "rb"))
 
 sequence_len = 30
 datax = []
+seq_in = [30]
 
 text = sys.argv[1:]
 
@@ -33,7 +34,7 @@ def prepare_input(text):
 
 	for i in range(sequence_len):
 
-		seq_in = text[i]
+		seq_in[i] = text[i]
 		datax.append([char_to_int[char] for char in seq_in])
 
 	x = np_utils.to_categorical(datax)
