@@ -22,29 +22,32 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
-sequence_len = 30
+sequence_len = 40
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = 5
+	step = 3
 	datax = []
 	datay = []
 
 	for i in range( 0, len(rawtxt) - sequence_len - 1, step):
 		
-		seq_in = rawtxt[i : i + sequence_len]
-		seq_out = rawtxt[i+1 : i + sequence_len+1]
-		datax.append([char_to_int[char] for char in seq_in])
-		datay.append([char_to_int[char] for char in seq_out])
+		#seq_in = rawtxt[i : i + sequence_len]
+		#seq_out = rawtxt[i+1 : i + sequence_len+1]
+		datax.append(rawtxt[i : i + sequence_len])
+		datay.append(rawtxt[i+1 : i + sequence_len+1])
 
-	n_patterns = len(datax)
+	#n_patterns = len(datax)
 	
-	print ("Total Pattern : ", n_patterns)
+	#print ("Total Pattern : ", n_patterns)
 
-	x = np_utils.to_categorical(datax)
+x = np.zeros((len(datax), sequence_len, len(chars)), dtype=np.bool)
+y = np.zeros((len(datax), len(chars)), dtype=np.bool)
 
-
-	y = np_utils.to_categorical(datay)
+for i, sentence in enumerate(sentences):
+    for t, char in enumerate(sentence):
+        x[i, t, char_to_int[char]] = 1
+    y[i, char_to_int[datay[i]] = 1
 
 	return x, y
 
