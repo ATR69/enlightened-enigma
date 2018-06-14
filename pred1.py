@@ -44,7 +44,7 @@ def prepare_input(text):
 	x = np.zeros((1, sequence_len, len(chars)))
 	
 	for t, char in enumerate(text):
-		print int_to_char[char]
+		print char
 		x[0, t, char_to_int[char]] = 1.        
    	
    	return x
