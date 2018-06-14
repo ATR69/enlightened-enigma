@@ -61,10 +61,10 @@ filepath = "wt-imp2.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
-for epoch in range(100):
+for epoch in range(10):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model1.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 1, callbacks = callbacks_list).history
+	history = model1.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 200, callbacks = callbacks_list).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model2.h5')
