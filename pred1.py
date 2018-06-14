@@ -31,14 +31,14 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 def prepare_input(text):
 
-	for i in range(len(text)):
+	for i in range(sequence_len):
 
 		seq_in = text[i]
 		datax.append([char_to_int[char] for char in seq_in])
 
 	x = np_utils.to_categorical(datax)
 
-	x = np.reshape(x, (1, sequence_len, len(chars)))
+	#x = np.reshape(x, (1, sequence_len, len(chars)))
 
 	return x
 
