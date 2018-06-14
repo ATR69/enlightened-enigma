@@ -45,7 +45,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 
 	y = np_utils.to_categorical(datay)
-			return x, y
+	
+	return x, y
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
