@@ -49,8 +49,9 @@ def predict_completion(text):
         #print next_char
         text = text[1:] + next_char
         completion += next_char
-        print completion
-        
+        print len(completion),'-', len(completion)
+        input()
+
         if len(original_text + completion) + 2 > len(original_text) and (next_char == ' ' or next_char == '\n'):
             return completion
 			
