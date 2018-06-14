@@ -42,7 +42,7 @@ def prepare_input(text):
 	#x = np.reshape(x, (1, sequence_len, len(chars)))
 
 	x = np.zeros((1, sequence_len, len(chars)))
-	
+	print text[1]
 	for t, char in enumerate(text):
 		print char
 		x[0, t, char_to_int[char]] = 1.        
