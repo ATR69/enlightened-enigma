@@ -78,11 +78,11 @@ def predict_completion(text):
 		print next_index
 		next_char = int_to_char[next_index]
 		text = text[1:] + next_char
-		print text
+		
 		completion += next_char
+
 		
-		
-		if len(original_text + completion) + 2 > len(original_text) and (next_char == ' ' or next_char == '\n') :
+		if len(original_text + completion) + 2 > len(original_text) and next_char == ' ':
 			return completion
 			
 def predict_completions(text, n=3):
