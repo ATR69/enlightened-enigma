@@ -75,9 +75,12 @@ def predict_completion(text):
 		x = prepare_input(text)
 		preds = model.predict(x, verbose=0)[0]
 		next_index = sample(preds, top_n=1)[0]
+		print next_index
 		next_char = int_to_char[next_index]
 		text = text[1:] + next_char
+		print text
 		completion += next_char
+		
 		
 		if len(original_text + completion) + 2 > len(original_text) and (next_char == ' ' or next_char == '\n') :
 			return completion
@@ -85,7 +88,7 @@ def predict_completion(text):
 def predict_completions(text, n=3):
 
 	x = prepare_input(text)
-	print "Input Prepared"
+	#print "Input Prepared"
 	preds = model.predict(x, verbose=0)[0]
 	next_indices = sample(preds, n)
 	print next_indices
