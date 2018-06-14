@@ -64,13 +64,14 @@ def sample(preds, top_n=3):
 	
 def predict_completion(text):
 
+	print text
 	original_text = text
 	print original_text
 	generated = text
 	completion = ''
 
 	while True:
-		
+
 		x = prepare_input(text)
 		preds = model.predict(x, verbose=0)[0]
 		next_index = sample(preds, top_n=1)[0]
