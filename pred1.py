@@ -44,9 +44,9 @@ def prepare_input(text):
 
 	x = np.zeros((1, sequence_len, len(chars)))
 
-	for t, char in (t):
+	for k, char in (t):
 			
-		x[0, t, char_to_int[char]] = 1.        
+		x[0, k, char_to_int[char]] = 1.        
    	
    	return x
 
