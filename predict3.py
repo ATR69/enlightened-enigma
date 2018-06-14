@@ -61,9 +61,11 @@ filepath = "wt-imp.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
-x, y = get_sequence(rawtxt, chars, sequence_len)
-history = model.fit(x, y, epochs = 2, validation_split = 0.05,  batch_size = 1000, callbacks = callbacks_list).history
-#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
+for epoch in range(10):
+
+	x, y = get_sequence(rawtxt, chars, sequence_len)
+	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 500, callbacks = callbacks_list).history
+	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
 pickle.dump(history, open("history1.p", "wb"))
