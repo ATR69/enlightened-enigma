@@ -47,9 +47,7 @@ def prepare_input(text):
 	for k in range(len(t)):
 			
 		x[0, k, char_to_int[t[k]]] = 1
-
-	#print "Input prepared"        
-   	
+	
    	return x
 
 
@@ -65,10 +63,14 @@ def sample(preds, top_n=3):
 	
 	
 def predict_completion(text):
+
 	original_text = text
+	print original_text
 	generated = text
 	completion = ''
+
 	while True:
+		
 		x = prepare_input(text)
 		preds = model.predict(x, verbose=0)[0]
 		next_index = sample(preds, top_n=1)[0]
