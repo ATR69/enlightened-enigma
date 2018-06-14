@@ -21,7 +21,7 @@ sequence_len = 30
 datax = []
 #seq_in = [30]
 
-text = sys.argv[1:]
+text = "cup"
 
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
