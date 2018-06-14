@@ -38,6 +38,7 @@ def sample(preds, top_n=3):
 	
 def predict_completion(text):
     original_text = text
+    print text
     generated = text
     completion = ''
     while True:
