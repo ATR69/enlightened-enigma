@@ -46,7 +46,9 @@ def prepare_input(text):
 
 	for k in range(len(t)):
 			
-		x[0, k, char_to_int[t[k]]] = 1.        
+		x[0, k, char_to_int[t[k]]] = 1
+
+	print "Input prepared"        
    	
    	return x
 
