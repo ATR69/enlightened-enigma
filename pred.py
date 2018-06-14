@@ -28,7 +28,7 @@ rawtxt = open(path).read().lower()
 
 chars = sorted(list(set(rawtxt)))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
-int_to_char = dict((c, i) for i, c in enumerate(chars))
+int_to_char = dict((i, c) for i, c in enumerate(chars))
 
 #print"Unique Chars: ", len(chars)
 #print "Raw Data: ", len(rawtxt)
