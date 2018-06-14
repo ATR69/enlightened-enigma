@@ -14,8 +14,8 @@ import heapq
 
 np.random.seed(47)
 
-model = load_model('keras_model.h5')
-history = pickle.load(open("history.p", "rb"))
+model = load_model('keras_model1.h5')
+history = pickle.load(open("history1.p", "rb"))
 
 sequence_len = 30
 datax = []
