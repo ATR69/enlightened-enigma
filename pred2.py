@@ -56,6 +56,7 @@ def predict_completions(text, n=3):
     x = prepare_input(text)
     preds = model.predict(x, verbose=0)[0]
     next_indices = sample(preds, n)
+    print next_indices
     r=[int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
     return [int_to_char[idx] + predict_completion(text[1:] + int_to_char[idx]) for idx in next_indices]
 	
@@ -63,6 +64,7 @@ q=sys.argv[1:]
 q=" ".join(q)
 #q="1 ch"
 seq = q.lower()
+print seq
 res = predict_completions(seq, 3)
 ret=[]
 for i in res:
