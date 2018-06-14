@@ -18,6 +18,7 @@ model = load_model('keras_model.h5')
 history = pickle.load(open("history.p", "rb"))
 
 sequence_len = 30
+datax = []
 
 text = sys.argv[1:]
 
@@ -31,7 +32,7 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 def prepare_input(text):
 
 	datax.append[[char_to_int[char] for char in text]]
-	x = np_utils.to_categorical(text)
+	x = np_utils.to_categorical(datax)
 
 	# x = np.zeros((1, sequence_len, len(chars)))
 	
