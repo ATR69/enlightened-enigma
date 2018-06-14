@@ -30,13 +30,16 @@ int_to_char = dict((c, i) for i, c in enumerate(chars))
 
 def prepare_input(text):
 
-	x = np.zeros((1, sequence_len, len(chars)))
-	
-	for t, char in enumerate(text):
+	datax.append[[char_to_int[char] for char in text]]
+	x = np_utils.to_categorical(text)
 
-		x[0, t, char_to_int[char]] = 1.        
+	# x = np.zeros((1, sequence_len, len(chars)))
+	
+	# for t, char in enumerate(text):
+
+	# 	x[0, t, char_to_int[char]] = 1.        
    	
-   	return x
+ #   	return x
 
 
 
