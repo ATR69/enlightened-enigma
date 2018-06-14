@@ -48,7 +48,7 @@ def prepare_input(text):
 			
 		x[0, k, char_to_int[t[k]]] = 1
 
-	print "Input prepared"        
+	#print "Input prepared"        
    	
    	return x
 
@@ -82,6 +82,7 @@ def predict_completion(text):
 def predict_completions(text, n=3):
 
 	x = prepare_input(text)
+	print "Input Prepared"
 	preds = model.predict(x, verbose=0)[0]
 	next_indices = sample(preds, n)
 	print next_indices
