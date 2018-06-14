@@ -77,9 +77,9 @@ def predict_completion(text):
 		next_index = sample(preds, top_n=1)[0]
 		#print next_index
 		next_char = int_to_char[next_index]
-		print next_char
+		#print next_char
 		text = text[1:] + next_char
-		
+		print text
 		completion += next_char
 
 		
