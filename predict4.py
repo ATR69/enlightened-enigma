@@ -26,7 +26,7 @@ sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = -3
+	step = -6
 	datax = []
 	datay = []
 
