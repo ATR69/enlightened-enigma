@@ -21,9 +21,9 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 
 def prepare_input(text):
 
-    x = np.zeros((1, sequence_len, len(char_to_int)))
+    x = np.zeros((1, sequence_len, len(int_to_char)))
     for t, char in enumerate(text):
-        x[0, t, char_to_int[char]] = 1.        
+        x[0, t, int_to_char[char]] = 1.        
     return x
 	
 
