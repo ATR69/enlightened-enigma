@@ -51,7 +51,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 x, y = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
 model = Sequential()
-model.add(Bidirectional(LSTM(128, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
+model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
 model.add(Dropout(0.2))
 model.add(Dense(len(chars),activation = 'softmax'))
 model.summary()
