@@ -22,7 +22,7 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
-sequence_len = 20
+sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
