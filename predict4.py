@@ -1,6 +1,6 @@
 import sys
 import numpy
-from keras.models import Sequential
+from keras.models import Sequential, load_model
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
 from keras.layers import TimeDistributed
 from keras.utils import np_utils
@@ -26,7 +26,7 @@ sequence_len = 20
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = -6
+	step = -3
 	datax = []
 	datay = []
 
@@ -67,5 +67,5 @@ for epoch in range(10):
 	history = model1.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 200, callbacks = callbacks_list).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
-model.save('keras_model2.h5')
+model1.save('keras_model2.h5')
 pickle.dump(history, open("history2.p", "wb"))

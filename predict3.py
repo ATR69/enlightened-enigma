@@ -1,6 +1,6 @@
 import sys
 import numpy
-from keras.models import Sequential
+from keras.models import Sequential, load_model
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
 from keras.layers import TimeDistributed
 from keras.utils import np_utils
