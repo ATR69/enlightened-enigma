@@ -42,14 +42,16 @@ def predict_completion(text):
     generated = text
     completion = ''
     while True:
+        print "Text : ", text
         x = prepare_input(text)
         preds = model.predict(x, verbose=0)[0]
+        print "Pred: ", preds
         next_index = sample(preds, top_n=1)[0]
         next_char = int_to_char[next_index]
-        print next_char
+        print "Next Char: ", next_char
         text = text[1:] + next_char
         completion += next_char
-        print len(original_text), '-', len(completion), '-', len(original_text+completion)
+        #print len(original_text), '-', len(completion), '-', len(original_text+completion)
 
         if len(original_text + completion) + 2 > len(original_text) and (next_char == ' ' or next_char == '\n'):
             return completion
