@@ -45,8 +45,8 @@ def get_sequence(datas):
 			#print datay
 
 
-	print datax.shape, '->', datay.shape
 	x = np_utils.to_categorical(datax)
+	
 	y = np_utils.to_categorical(datay)
 
 	return x, y
