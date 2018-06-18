@@ -34,7 +34,7 @@ def get_sequence(datas):
 
 	for data in datas:
 
-		if len(list(data)) > 40:
+		if (len(list(data)) > 40:
 
 			continue
 
@@ -43,12 +43,14 @@ def get_sequence(datas):
 			datax.append(data[:i])
 			datay.append(data[i])
 
-print('num training examples: ',len(sentences))
+	x = np_utils.to_categorical(datax)
+	y = np_utils.to_categorical(datay)
 
-x = np_utils.to_categorical(datax)
-y = np_utils.to_categorical(datay)
+	return x, y
 
-return x, y
+
+#print('num training examples: ',len(sentences))
+
 
 x, y = get_sequence(datas)
 #print (x.shape, '\n', y.shape)
