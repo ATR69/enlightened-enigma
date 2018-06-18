@@ -43,8 +43,8 @@ def get_sequence(datas):
 			#print datax, '\n'
 			datay.append(data[i])
 			#print datay
-	print type(datax[3])
-	x = np_utils.to_categorical(datax)
+	
+	x = np_utils.to_categorical(datax[i] for i in datax)
 
 	y = np_utils.to_categorical(datay)
 
