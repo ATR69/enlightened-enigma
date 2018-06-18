@@ -55,7 +55,9 @@ model.add(Bidirectional(LSTM(128, return_sequences = True), input_shape = (x.sha
 model.add(Dropout(0.2))
 model.add(Dense(len(chars),activation = 'softmax'))
 model.summary()
-model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+optimizer = RMSprop(lr=0.01)
+model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+#model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
 filepath = "wt-imp1.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
@@ -64,7 +66,7 @@ callbacks_list = [checkpoint]
 for epoch in range(1):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 500, callbacks = callbacks_list, shuffle=True).history
+	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 1500, callbacks = callbacks_list, shuffle=True).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
