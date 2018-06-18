@@ -22,7 +22,7 @@ for i in datas:
 
 
 print len(words)
-print list(set(words))
+print words[10]
 word_to_int = dict((c, i) for i, c in enumerate(vocab))
 int_to_word = dict((i, c) for i, c in enumerate(vocab))
 
