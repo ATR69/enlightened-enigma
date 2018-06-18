@@ -40,10 +40,10 @@ def get_sequence(datas):
 		for i in range(0,len(data),3):
 
 			datax.append(data[:i])
-			print datax
+			print datax, '\n'
 			datay.append(data[i])
 			print datay
-			input()
+
 
 	x = np_utils.to_categorical(datax)
 	y = np_utils.to_categorical(datay)
