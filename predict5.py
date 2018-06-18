@@ -20,7 +20,7 @@ datas = rawtxt.split("\n")
 for i in datas:
 	words.append(i.split(' '))
 
-vocab = sorted(list(set(words)))
+vocab = sorted(list(set(words[i] for i in words)))
 word_to_int = dict((c, i) for i, c in enumerate(vocab))
 int_to_word = dict((i, c) for i, c in enumerate(vocab))
 
