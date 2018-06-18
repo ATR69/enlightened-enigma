@@ -39,9 +39,9 @@ def get_sequence(datas):
 
 		for i in range(0,len(data),3):
 
-			datax.append(data[:i])
+			datax.append(char_to_int(data[:i]))
 			#print datax, '\n'
-			datay.append(data[i])
+			datay.append(char_to_int(data[i]))
 			#print datay
 	
 	x = np_utils.to_categorical(datax)
