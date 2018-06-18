@@ -22,34 +22,35 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
+datas = text.split("\n")
+
+
 sequence_len = 30
 
-def get_sequence(rawtxt, chars, sequence_len):
+def get_sequence(datas):
 
-	step = 3
 	datax = []
 	datay = []
 
-	for i in range( 0, len(rawtxt) - sequence_len - 1, step):
-		
-		seq_in = rawtxt[i : i + sequence_len]
-		seq_out = rawtxt[i+1:i + sequence_len+1]
-		datax.append([char_to_int[char] for char in seq_in])
-		datay.append([char_to_int[char] for char in seq_out])
+	for data in datas:
 
-	n_patterns = len(datax)
-	
-	print ("Total Pattern : ", n_patterns)
+		if len(list(data)) > 40:
 
-	x = numpy.reshape(datax, (n_patterns,sequence_len, 1))
-	x = x / float(len(chars))
+			continue
 
+		for i in range(0,len(data),3):
 
-	y = np_utils.to_categorical(datay)
-		
-	return x, y
+			datax.append(data[:i])
+			datay.append(data[i])
 
-x, y = get_sequence(rawtxt, chars, sequence_len)
+print('num training examples: ',len(sentences))
+
+x = np_utils.to_categorical(datax)
+y = np_utils.to_categorical(datay)
+
+return x, y
+
+x, y = get_sequence(datas)
 #print (x.shape, '\n', y.shape)
 model = Sequential()
 model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
@@ -63,10 +64,10 @@ checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_
 callbacks_list = [checkpoint]
 
 
-for epoch in range(100):
+for epoch in range(2):
 
-	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 1, callbacks = callbacks_list).history
+	x, y = get_sequence(datas)
+	history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 1000, callbacks = callbacks_list).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model.h5')
