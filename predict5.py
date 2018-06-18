@@ -16,7 +16,7 @@ path = "new_cup.txt"
 rawtxt = open(path).read().lower()
 
 datas = rawtxt.split("\n")
-words = datas.split(" ")
+words = rawtxt.split(" ")
 
 vocab = sorted(list(set(words)))
 word_to_int = dict((c, i) for i, c in enumerate(chars))
