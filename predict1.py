@@ -23,7 +23,8 @@ print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
 datas = rawtxt.split("\n")
-print datas
+print datas.shape
+input()
 
 sequence_len = 30
 
