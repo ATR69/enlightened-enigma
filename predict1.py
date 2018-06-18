@@ -23,7 +23,7 @@ print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
 datas = rawtxt.split("\n")
-
+print datas
 
 sequence_len = 30
 
@@ -34,7 +34,7 @@ def get_sequence(datas):
 
 	for data in datas:
 
-		if len(list(data)) > 40:
+		if len(list(data)) > sequence_len:
 
 			continue
 
