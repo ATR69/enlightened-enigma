@@ -34,7 +34,7 @@ def get_sequence(datas):
 
 	for data in datas:
 
-		if (len(list(data)) > 40:
+		if len(list(data)) > 40:
 
 			continue
 
