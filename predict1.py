@@ -40,11 +40,12 @@ def get_sequence(datas):
 		for i in range(0,len(data),3):
 
 			datax.append(data[:i])
-			print datax, '\n'
+			#print datax, '\n'
 			datay.append(data[i])
-			print datay
+			#print datay
 
 
+	print datax.shape, '->', datay.shape
 	x = np_utils.to_categorical(datax)
 	y = np_utils.to_categorical(datay)
 
