@@ -39,10 +39,10 @@ def get_sequence(datas):
 
 		for i in range(0,len(data),3):
 
-			datax.append(char_to_int(data[:i]))
-			#print datax, '\n'
-			datay.append(char_to_int(data[i]))
-			#print datay
+			seq_in = data[:i]
+			seq_out = data[i]
+			datax.append([char_to_int[char] for char in seq_in])
+			datay.append([char_to_int[char] for char in seq_out])
 	
 	x = np_utils.to_categorical(datax)
 
