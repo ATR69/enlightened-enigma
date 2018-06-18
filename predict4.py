@@ -51,7 +51,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 x, y = get_sequence(rawtxt, chars, sequence_len)
 #print (x.shape, '\n', y.shape)
 model1 = Sequential()
-model1.add(Bidirectional(LSTM(256, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
+model1.add(Bidirectional(LSTM(128, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
 model1.add(Dropout(0.2))
 model1.add(Dense(len(chars),activation = 'softmax'))
 model1.summary()
@@ -61,10 +61,10 @@ filepath = "wt-imp2.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
-for epoch in range(10):
+for epoch in range(1):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model1.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 200, callbacks = callbacks_list).history
+	history = model1.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 200, callbacks = callbacks_list).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model1.save('keras_model2.h5')
