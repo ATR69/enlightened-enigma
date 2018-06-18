@@ -18,7 +18,7 @@ rawtxt = open(path).read().lower()
 words = []
 datas = rawtxt.split("\n")
 for i in datas:
-	words.append(i.split(' '))
+	words=i.split(' ')
 
 
 print len(words)
