@@ -19,8 +19,8 @@ datas = rawtxt.split("\n")
 words = rawtxt.split(" ")
 
 vocab = sorted(list(set(words)))
-word_to_int = dict((c, i) for i, c in enumerate(chars))
-int_to_word = dict((i, c) for i, c in enumerate(chars))
+word_to_int = dict((c, i) for i, c in enumerate(vocab))
+int_to_word = dict((i, c) for i, c in enumerate(vocab))
 
 print "Unique Words: ", len(vocab)
 print "No of words: ", len(words)
