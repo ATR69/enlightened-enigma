@@ -64,8 +64,8 @@ callbacks_list = [checkpoint]
 for epoch in range(0):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 500, callbacks = callbacks_list, shuffle=True).history
+	history1 = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 500, callbacks = callbacks_list, shuffle=True).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
-pickle.dump(history, open("history1.p", "wb"))
+pickle.dump(history1, open("history1.p", "wb"))
