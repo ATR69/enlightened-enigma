@@ -51,7 +51,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 x, y = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
 model = Sequential()
-model.add(Bidirectional(LSTM(128, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
+model.add(Bidirectional(LSTM(64, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
 model.add(Dropout(0.2))
 model.add(Dense(len(chars),activation = 'softmax'))
 model.summary()
@@ -63,7 +63,7 @@ filepath = "wt-imp1.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
-for epoch in range(2):
+for epoch in range(1):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
 	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 15000, callbacks = callbacks_list, shuffle=True).history
