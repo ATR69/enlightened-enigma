@@ -15,8 +15,10 @@ numpy.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
 
+words = []
 datas = rawtxt.split("\n")
-words = rawtxt.split(" ")
+for i in datas:
+	words.append(i.split(' '))
 
 print words
 
