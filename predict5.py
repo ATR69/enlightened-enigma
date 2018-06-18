@@ -28,7 +28,7 @@ int_to_word = dict((i, c) for i, c in enumerate(vocab))
 
 print "Unique Words: ", len(vocab)
 print "No of words: ", len(words)
-
+input()
 sequence_len = 40
 
 def get_sequence(datas):
