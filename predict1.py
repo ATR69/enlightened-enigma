@@ -44,9 +44,9 @@ def get_sequence(datas):
 			datay.append(data[i])
 			#print datay
 
-
+		print datax
 	x = np_utils.to_categorical(datax)
-	
+
 	y = np_utils.to_categorical(datay)
 
 	return x, y
