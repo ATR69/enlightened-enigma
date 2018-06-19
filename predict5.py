@@ -1,5 +1,6 @@
 import sys
 import numpy
+from collections import counter
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
 from keras.layers import TimeDistributed
@@ -18,20 +19,24 @@ rawtxt = open(path).read().lower()
 words = []
 vocab = []
 datas = []
-#datas = rawtxt.split("\n")
-#for i in datas:
-#	words=i.split(' ')
+datas = rawtxt.split("\n")
 
-for line in rawtxt:
-	line.rstrip()
-	words = line.split()
-	datas.extend(words)
+for i in datas:
+	words = i.split(' ')
+print words
 
-datas.sort()
+input()
 
-for word in datas:
-	if word not in vocab:
-		vocab.append(word)
+# for line in rawtxt:
+# 	line.rstrip()
+# 	words = line.split()
+# 	datas.extend(words)
+
+# datas.sort()
+
+# for word in datas:
+# 	if word not in vocab:
+# 		vocab.append(word)
 
 print len(vocab), '->', len(datas)
 print '\n', vocab
