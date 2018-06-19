@@ -22,7 +22,7 @@ datas = []
 datas = rawtxt.split("\n")
 
 for i in datas:
-	words = i.split(' ')
+	words.append(i.split(' '))
 print words
 
 input()
