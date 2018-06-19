@@ -1,5 +1,5 @@
 import sys
-import numpy
+import numpy as np
 from keras.models import Sequential, load_model
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
 from keras.layers import TimeDistributed
@@ -37,7 +37,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 			for i in range (0, len(data), 1):
 
 				seq_in = data[:i]
-				print seq_in
+				#print seq_in
 				seq_out = data[i]
 				datax.append([char_to_int[char] for char in seq_in])
 				datay.append([char_to_int[char] for char in seq_out])
