@@ -33,11 +33,13 @@ def get_sequence(rawtxt, chars, sequence_len):
 	for i in range( 0, len(rawtxt) - sequence_len - 1, step):
 		
 		seq_in = rawtxt[i : i + sequence_len]
+		print seq_in
 		seq_out = rawtxt[i+1 : i + sequence_len+1]
 		datax.append([char_to_int[char] for char in seq_in])
 		datay.append([char_to_int[char] for char in seq_out])
 
 	n_patterns = len(datax)
+	input()
 	
 	print ("Total Pattern : ", n_patterns)
 
@@ -51,8 +53,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 x, y = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
 model = Sequential()
-model.add(Bidirectional(LSTM(64, return_sequences = True), input_shape = (x.shape[1], x.shape[2])))
-model.add(Dropout(0.2))
+model.add(Bidirectional(LSTM(256, return_sequences = True, activation = 'relu'), input_shape = (x.shape[1], x.shape[2])))
+model.add(Dropout(0.4))
 model.add(Dense(len(chars),activation = 'softmax'))
 model.summary()
 optimizer = RMSprop(lr=0.01)
@@ -66,7 +68,7 @@ callbacks_list = [checkpoint]
 for epoch in range(2):
 
 	x, y = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 15000, callbacks = callbacks_list, shuffle=True).history
+	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 1500, callbacks = callbacks_list, shuffle=True).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
