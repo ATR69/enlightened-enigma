@@ -19,6 +19,7 @@ rawtxt = open(path)
 words = []
 vocab = []
 datas = []
+a = []
 # datas = rawtxt.split("\n")
 
 # for i in datas:
@@ -41,7 +42,8 @@ for word in datas:
 		vocab.append(word)
 
 print len(vocab), '->', len(datas)
-print '\n', vocab
+a = vocab[60:]
+print '\n', a
 input()
 
 word_to_int = dict((c, i) for i, c in enumerate(vocab))
