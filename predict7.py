@@ -31,6 +31,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	datay = []
 
 	for data in rawtxt:
+		print data
 
 		if data not '\\n':
 			
