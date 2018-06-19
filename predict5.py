@@ -14,17 +14,27 @@ import heapq
 numpy.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
-print type(rawtxt)
-input()
 
 words = []
-datas = rawtxt.split("\n")
-for i in datas:
-	words=i.split(' ')
+vocab = []
+#datas = rawtxt.split("\n")
+#for i in datas:
+#	words=i.split(' ')
 
+for line in rawtxt:
+	line.rstrip()
+	words = line.split()
+	datas.extend(words)
 
-print len(words)
-print words
+datas.sort()
+
+for word in datas:
+	if word not in vocab:
+		vocab.append(word)
+
+print len(vocab), '->', len(datas)
+input()
+
 word_to_int = dict((c, i) for i, c in enumerate(vocab))
 int_to_word = dict((i, c) for i, c in enumerate(vocab))
 
