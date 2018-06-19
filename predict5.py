@@ -1,6 +1,6 @@
 import sys
 import numpy
-from collections import counter
+from collections import Counter
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
 from keras.layers import TimeDistributed
