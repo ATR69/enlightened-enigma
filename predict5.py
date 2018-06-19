@@ -19,24 +19,26 @@ rawtxt = open(path).read().lower()
 words = []
 vocab = []
 datas = []
-datas = rawtxt.split("\n")
+# datas = rawtxt.split("\n")
 
-for i in datas:
-	words.append(i.split(' '))
-print words
+# for i in datas:
+# 	words.append(i.split(' '))
+# print words
 
-input()
+# input()
 
-# for line in rawtxt:
-# 	line.rstrip()
-# 	words = line.split()
-# 	datas.extend(words)
+for line in rawtxt:
+	line.rstrip()
+	words = line.split()
+	datas.extend(words)
 
-# datas.sort()
+datas.sort()
 
-# for word in datas:
-# 	if word not in vocab:
-# 		vocab.append(word)
+print datas
+
+for word in datas:
+	if word not in vocab:
+		vocab.append(word)
 
 print len(vocab), '->', len(datas)
 print '\n', vocab
