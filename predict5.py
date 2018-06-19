@@ -35,7 +35,7 @@ for line in rawtxt:
 	datas.extend(words)
 
 datas.sort()
-print sort
+print datas
 input()
 
 for word in datas:
