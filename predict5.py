@@ -14,7 +14,7 @@ import heapq
 
 numpy.random.seed(47)
 path = "new_cup.txt"
-rawtxt = open(path).read().lower()
+rawtxt = open(path)
 
 words = []
 vocab = []
