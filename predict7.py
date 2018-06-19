@@ -26,21 +26,23 @@ sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = 1
+	#step = 1
 	datax = []
 	datay = []
 
-	for i in range( 0, len(rawtxt)/2, step):
-		
-		seq_in = rawtxt[:i]
-		print seq_in
-		seq_out = rawtxt[i]
-		datax.append([char_to_int[char] for char in seq_in])
-		datay.append([char_to_int[char] for char in seq_out])
+	for data in rawtxt:
+
+		if data =! '\n':
+			
+			for i in range (0, len(data), 2):
+
+				seq_in = data[:i]
+				seq_out = data[i]
+				datax.append([char_to_int[char] for char in seq_in])
+				datay.append([char_to_int[char] for char in seq_out])
+				
 
 	n_patterns = len(datax)
-	input()
-	
 	print ("Total Pattern : ", n_patterns)
 
 	x = np_utils.to_categorical(datax)
