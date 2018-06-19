@@ -35,8 +35,6 @@ for line in rawtxt:
 	datas.extend(words)
 
 datas.sort()
-print datas
-input()
 
 for word in datas:
 	if word not in vocab:
