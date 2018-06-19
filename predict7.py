@@ -52,7 +52,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	for i, sentence in enumerate(datax):
 		for t, word in enumerate(sentence):
 			x[i, t, chars[word]] = 1
-	y[i, chars[datay[i]]] = 1
+		y[i, chars[datay[i]]] = 1
 
 
 	#x = np_utils.to_categorical(datax)
