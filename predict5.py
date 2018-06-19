@@ -28,13 +28,14 @@ datas = []
 # input()
 
 for line in rawtxt:
+	print line
 	line.rstrip()
+	print line
 	words = line.split()
 	datas.extend(words)
 
 datas.sort()
-
-print datas
+input()
 
 for word in datas:
 	if word not in vocab:
