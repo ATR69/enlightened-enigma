@@ -14,6 +14,8 @@ import heapq
 numpy.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
+print type(rawtxt)
+input()
 
 words = []
 datas = rawtxt.split("\n")
