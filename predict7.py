@@ -37,6 +37,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 			for i in range (0, len(data), 1):
 
 				seq_in = data[:i]
+				print seq_in
 				seq_out = data[i]
 				datax.append([char_to_int[char] for char in seq_in])
 				datay.append([char_to_int[char] for char in seq_out])
@@ -47,7 +48,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	x = np.zeros((n_patterns, sequence_len, char), dtype=np.bool)
 	y = np.zeros((n_patterns, chars), dtype=np.bool)
-	
+
 	for i, sentence in enumerate(datax):
 
     	for t, word in enumerate(sentence):
