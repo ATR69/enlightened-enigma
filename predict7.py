@@ -50,11 +50,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 	y = np.zeros((n_patterns, chars), dtype=np.bool)
 
 	for i, sentence in enumerate(datax):
-
-    	for t, word in enumerate(sentence):
-
-        	x[i, t, chars[word]] = 1
-
+		for t, word in enumerate(sentence):
+			x[i, t, chars[word]] = 1
 	y[i, chars[datay[i]]] = 1
 
 
