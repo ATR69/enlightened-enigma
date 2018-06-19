@@ -15,6 +15,8 @@ numpy.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
 
+datas = []
+
 chars = sorted(list(set(rawtxt)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((i, c) for i, c in enumerate(chars))
