@@ -46,8 +46,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 	n_patterns = len(datax)
 	print ("Total Pattern : ", n_patterns)
 
-	x = np.zeros((n_patterns, sequence_len, char), dtype=np.bool)
-	y = np.zeros((n_patterns, chars), dtype=np.bool)
+	x = np.zeros((n_patterns, sequence_len, len(char), dtype=np.bool)
+	y = np.zeros((n_patterns, len(chars), dtype=np.bool)
 
 	for i, sentence in enumerate(datax):
 		for t, word in enumerate(sentence):
