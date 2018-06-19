@@ -32,7 +32,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for data in rawtxt:
 
-		if data =! '\n':
+		if data not '\n':
 			
 			for i in range (0, len(data), 2):
 
