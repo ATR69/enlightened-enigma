@@ -17,6 +17,7 @@ rawtxt = open(path).read().lower()
 
 words = []
 vocab = []
+datas = []
 #datas = rawtxt.split("\n")
 #for i in datas:
 #	words=i.split(' ')
