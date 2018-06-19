@@ -26,11 +26,11 @@ sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = 3
+	step = 1
 	datax = []
 	datay = []
 
-	for i in range( 0, len(rawtxt) - sequence_len - 1, step):
+	for i in range( 0, len(rawtxt)/2, step):
 		
 		seq_in = rawtxt[:i]
 		print seq_in
