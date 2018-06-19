@@ -36,21 +36,22 @@ for line in rawtxt:
 	datas.extend(words)
 
 datas.sort()
+print datas
+input()
 
 for word in datas:
 	if word not in vocab:
 		vocab.append(word)
 
-print len(vocab), '->', len(datas)
+#print len(vocab), '->', len(datas)
 a = vocab[60:]
-print '\n', a
-input()
+print len(a)
 
 word_to_int = dict((c, i) for i, c in enumerate(vocab))
 int_to_word = dict((i, c) for i, c in enumerate(vocab))
 
 print "Unique Words: ", len(vocab)
-print "No of words: ", len(words)
+print "No of words: ", len(datas)
 input()
 sequence_len = 40
 
