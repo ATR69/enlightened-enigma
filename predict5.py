@@ -34,6 +34,7 @@ for word in datas:
 		vocab.append(word)
 
 print len(vocab), '->', len(datas)
+print '\n', vocab
 input()
 
 word_to_int = dict((c, i) for i, c in enumerate(vocab))
