@@ -22,7 +22,12 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
-datas = rawtxt.split("\n")
+for line in rawtxt:
+	#print line
+	line.rstrip()
+	#print line
+	words = line.split()
+	datas.extend(words)
 
 sequence_len = 30
 
