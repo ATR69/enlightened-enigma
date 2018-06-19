@@ -14,7 +14,7 @@ import heapq
 
 numpy.random.seed(47)
 path = "new_cup.txt"
-rawtxt = open(path)
+rawtxt = open(path).lower()
 
 words = []
 vocab = []
@@ -28,13 +28,14 @@ datas = []
 # input()
 
 for line in rawtxt:
-	print line
+	#print line
 	line.rstrip()
-	print line
+	#print line
 	words = line.split()
 	datas.extend(words)
 
 datas.sort()
+print sort
 input()
 
 for word in datas:
