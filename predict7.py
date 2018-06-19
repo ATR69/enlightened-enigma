@@ -11,7 +11,7 @@ from keras.preprocessing.text import one_hot
 import pickle
 import heapq
 
-numpy.random.seed(47)
+np.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
 
