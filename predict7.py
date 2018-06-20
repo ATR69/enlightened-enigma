@@ -37,12 +37,13 @@ def get_sequence(rawtxt, chars, sequence_len):
 			for i in range (1, len(data) - 1, 1):
 
 				seq_in = data[:i]
-				#print seq_in
+				print seq_in
 				seq_out = data[i]
 				datax.append([char_to_int[char] for char in seq_in])
 				datay.append([char_to_int[char] for char in seq_out])
 				
 
+	input()
 	n_patterns = len(datax)
 	print ("Total Pattern : ", n_patterns)
 
@@ -63,6 +64,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	return x, y
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
+print x
 print (x.shape, '\n', y.shape)
 model = Sequential()
 model.add(Bidirectional(LSTM(256, return_sequences = True, activation = 'relu'), input_shape = (x.shape[1], x.shape[2])))
