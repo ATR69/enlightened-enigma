@@ -14,7 +14,7 @@ import heapq
 np.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
-print rawtxt
+print type(rawtxt)
 input()
 
 chars = sorted(list(set(rawtxt)))
