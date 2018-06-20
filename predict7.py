@@ -46,7 +46,9 @@ def get_sequence(rawtxt, chars, sequence_len):
 			datay.append([char_to_int[seq_out]])
 
 	n_patterns = len(datax)	
+	print datax.shape, '->', datay.shape
 	print ("Total Pattern : ", n_patterns)
+	input()
 	
 	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
