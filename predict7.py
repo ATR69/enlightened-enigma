@@ -68,7 +68,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	return x, y
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
-print (x.shape, '\n', y.shape)
+#print (x.shape, '\n', y.shape)
 input()
 model = Sequential()
 model.add(Bidirectional(LSTM(256, return_sequences = True, activation = 'relu'), input_shape = (x.shape[1], x.shape[2])))
