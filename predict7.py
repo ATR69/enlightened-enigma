@@ -20,8 +20,8 @@ sentences = rawtxt.split('\n')
 
 
 chars = sorted(list(set(rawtxt)))
-print chars
-input()
+#print chars
+
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
 
