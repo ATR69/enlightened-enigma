@@ -34,7 +34,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 		
 		if data != "\n":
 			
-			for i in range (1, len(data), 1):
+			for i in range (1, len(data) - 1, 1):
 
 				seq_in = data[:i]
 				#print seq_in
@@ -46,7 +46,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	n_patterns = len(datax)
 	print ("Total Pattern : ", n_patterns)
 
-	x = np.zeros((n_patterns, sequence_len, len(char)), dtype=np.bool)
+	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
 	for i, sentence in enumerate(datax):
