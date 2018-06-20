@@ -48,7 +48,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 			datay.append([char_to_int[seq_out]])
 
 	n_patterns = len(datax)	
-	print datax[4][5]
+	#print datax[4][5]
 	print ("Total Pattern : ", n_patterns)
 
 	x = tf.one_hot(datax, vocab)
