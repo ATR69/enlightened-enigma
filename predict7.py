@@ -14,6 +14,8 @@ import heapq
 np.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
+print rawtxt
+input()
 
 chars = sorted(list(set(rawtxt)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
