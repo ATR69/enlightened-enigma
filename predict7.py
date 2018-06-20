@@ -35,8 +35,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 		
 		if rawtxt[i] != "\n":
 
-
-			datax.append([char_to_int[rawtxt[:i]]])
+			seq_in = rawtxt[:i]
+			datax.append([char_to_int[char] for char in seq_in]])
 			datay.append([char_to_int[rawtxt[i]]])
 				
 
