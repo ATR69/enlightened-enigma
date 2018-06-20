@@ -34,7 +34,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 		
 		if data != "\n":
 			
-			for i in range (0, len(data), 1):
+			for i in range (1, len(data), 1):
 
 				seq_in = data[:i]
 				#print seq_in
