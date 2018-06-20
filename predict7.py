@@ -51,21 +51,22 @@ def get_sequence(rawtxt, chars, sequence_len):
 	#print datax[4][5]
 	print ("Total Pattern : ", n_patterns)
 
-	x = tf.one_hot(datax, vocab)
-	y = tf.one_hot(datay, vocab)
+	#x = tf.one_hot(datax, vocab)
+	#y = tf.one_hot(datay, vocab)
 
-	print "Done"
+	
 		
-	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
-	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
+	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
-	# for i, sentence in enumerate(datax):
-	# 	for t, word in enumerate(sentence):
-	# 		print word
-	# 		x[i, t, word] = 1
+	for i, sentence in enumerate(datax):
+		for t, word in enumerate(sentence):
+			print word
+			x[i, t, word] = 1
 
-	# for i, w in enumerate(datay):
-	# 	y[i, w] = 1
+	for i, w in enumerate(datay):
+		y[i, w] = 1
+	print "Done"
 
 	return x, y
 
