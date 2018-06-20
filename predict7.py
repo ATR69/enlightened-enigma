@@ -31,12 +31,13 @@ def get_sequence(rawtxt, chars, sequence_len):
 	datax = []
 	datay = []
 
-	for i in range(0, len(rawtxt) - 2, step):
+	for i in range(1, len(rawtxt) - 2, step):
 		
 		if rawtxt[i] != "\n":
 
-			datax.append([char_to_int[rawtxt[i]]])
-			datay.append([char_to_int[rawtxt[i - 1]]])
+			print rawtxt[i]
+			datax.append([char_to_int[rawtxt[i - 1]]])
+			datay.append([char_to_int[rawtxt[i]]])
 				
 
 
