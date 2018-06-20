@@ -53,6 +53,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	x = tf.one_hot(datax, vocab)
 	y = tf.one_hot(datay, vocab)
+
+	print "Done"
 		
 	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
