@@ -16,11 +16,11 @@ path = "new_cup.txt"
 rawtxt = open(path).read().lower()
 sentences = rawtxt.split('\n')
 
-#print sentences[4][5],'\n', len(sentences[4])
+print sentences[4][5],'\n', len(sentences[4])
 
 
 chars = sorted(list(set(rawtxt)))
-#print chars
+print chars
 
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
@@ -46,7 +46,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 			datay.append([char_to_int[seq_out]])
 
 	n_patterns = len(datax)	
-	print len(datax[10])
+	print len(datax[4][5])
 	print ("Total Pattern : ", n_patterns)
 		
 	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
