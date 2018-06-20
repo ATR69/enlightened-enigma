@@ -16,11 +16,11 @@ path = "new_cup.txt"
 rawtxt = open(path).read().lower()
 sentences = rawtxt.split('\n')
 
-print sentences[4][5],'\n', len(sentences[4])
+#print sentences[4][5],'\n', len(sentences[4])
 
 
 chars = sorted(list(set(rawtxt)))
-print chars
+#print chars
 
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
@@ -55,10 +55,10 @@ def get_sequence(rawtxt, chars, sequence_len):
 	for i, sentence in enumerate(datax):
 		for t, word in enumerate(sentence):
 			
-			x[i, t, chars[word]] = 1
+			x[i, t, word] = 1
 
 	for i, w in enumerate(datay):
-		y[i, chars[w]] = 1
+		y[i, w] = 1
 
 	return x, y
 
