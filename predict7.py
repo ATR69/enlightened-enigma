@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+import tensorflow as tf
 from keras.models import Sequential, load_model
 from keras.layers import LSTM, Dense, Dropout, Bidirectional
 from keras.layers import TimeDistributed
@@ -20,15 +21,16 @@ sentences = rawtxt.split('\n')
 
 
 chars = sorted(list(set(rawtxt)))
+vocab = len(chars)
 #print chars
 
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
 
-print"Unique Chars: ", len(chars)
+print"Unique Chars: ", vocab
 print "Raw Data: ", len(rawtxt)
 
-sequence_len = 50
+sequence_len = 40
 
 def get_sequence(rawtxt, chars, sequence_len):
 
@@ -48,17 +50,20 @@ def get_sequence(rawtxt, chars, sequence_len):
 	n_patterns = len(datax)	
 	print datax[4][5]
 	print ("Total Pattern : ", n_patterns)
+
+	x = tf.one_hot(datax, vocab)
+	y = tf.one_hot(datay, vocab)
 		
-	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
-	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
+	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
-	for i, sentence in enumerate(datax):
-		for t, word in enumerate(sentence):
-			print word
-			x[i, t, word] = 1
+	# for i, sentence in enumerate(datax):
+	# 	for t, word in enumerate(sentence):
+	# 		print word
+	# 		x[i, t, word] = 1
 
-	for i, w in enumerate(datay):
-		y[i, w] = 1
+	# for i, w in enumerate(datay):
+	# 	y[i, w] = 1
 
 	return x, y
 
