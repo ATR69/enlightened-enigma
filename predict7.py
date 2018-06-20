@@ -43,7 +43,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 				datay.append([char_to_int[char] for char in seq_out])
 				
 
-	input()
+
 	n_patterns = len(datax)
 	print ("Total Pattern : ", n_patterns)
 
