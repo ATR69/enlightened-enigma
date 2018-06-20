@@ -45,8 +45,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	n_patterns = len(datax)	
 	print ("Total Pattern : ", n_patterns)
-	input()
-
+	
 	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
@@ -56,16 +55,11 @@ def get_sequence(rawtxt, chars, sequence_len):
 		y[i, chars[datay[i]]] = 1
 
 
-	#x = np_utils.to_categorical(datax)
-
-
-	#y = np_utils.to_categorical(datay)
-
 	return x, y
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
-print x
 print (x.shape, '\n', y.shape)
+input()
 model = Sequential()
 model.add(Bidirectional(LSTM(256, return_sequences = True, activation = 'relu'), input_shape = (x.shape[1], x.shape[2])))
 model.add(Dropout(0.4))
