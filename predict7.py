@@ -14,13 +14,14 @@ import heapq
 np.random.seed(47)
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
-print type(rawtxt)
-input()
+sentences = rawtxt.split('\n')
+
+#print sentences[4][5],'\n', len(sentences[4])
+
 
 chars = sorted(list(set(rawtxt)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
-
 
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
@@ -29,22 +30,22 @@ sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	step = 3
+	step = 2
 	datax = []
 	datay = []
 
-	for i in range(1, len(rawtxt) - 2, step):
-		
-		if rawtxt[i] != "\n":
+	for i in range(len(sentences)):
 
-			print rawtxt[i]
-			datax.append([char_to_int[rawtxt[i - 1]]])
-			datay.append([char_to_int[rawtxt[i]]])
-				
+		for j in range(0, len(sentences[i]) - 1, step):
 
+			seq_in = sentences[i][:j]
+			seq_out = sentences[i][j]
+			datax.append([char_to_int[char] for char in seq_in])
+			datay.append([char_to_int[seq_out]])
 
-	n_patterns = len(datax)
+	n_patterns = len(datax)	
 	print ("Total Pattern : ", n_patterns)
+	input()
 
 	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
