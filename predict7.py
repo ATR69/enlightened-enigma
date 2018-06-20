@@ -54,9 +54,10 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for i, sentence in enumerate(datax):
 		for t, word in enumerate(sentence):
-			print chars[word]
+			
 			x[i, t, chars[word]] = 1
-		y[i, chars[datay[i]]] = 1
+		print chars[datay[i]]
+		#y[i, chars[datay[i]]] = 1
 
 
 	return x, y
