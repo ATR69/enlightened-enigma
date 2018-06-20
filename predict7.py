@@ -19,6 +19,9 @@ chars = sorted(list(set(rawtxt)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((c, i) for i, c in enumerate(chars))
 
+print char_to_int
+input()
+
 print"Unique Chars: ", len(chars)
 print "Raw Data: ", len(rawtxt)
 
@@ -26,23 +29,16 @@ sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	#step = 1
+	step = 1
 	datax = []
 	datay = []
 
-	for data in rawtxt:
+	for i in range(0, len(rawtxt) - 1, step)
 		
 		if data != "\n":
 
-			print data
-			
-			for i in range (1, len(data) - 1, 2):
-
-				seq_in = data[:i]
-				print seq_in
-				seq_out = data[i]
-				datax.append([char_to_int[char] for char in seq_in])
-				datay.append([char_to_int[char] for char in seq_out])
+			datax.append([char_to_int[]])
+			datay.append([char_to_int[char] for char in seq_out])
 				
 
 
