@@ -51,7 +51,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	#print datax[4][5]
 	print ("Total Pattern : ", n_patterns)
 
-	x = tf.one_hot(datax[40], sequence_len)
+	x = tf.one_hot(datax[50], sequence_len)
 	y = tf.one_hot(datay, 1)
 
 	
