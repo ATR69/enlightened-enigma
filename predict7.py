@@ -51,32 +51,31 @@ def get_sequence(rawtxt, chars, sequence_len):
 	#print datax[4][5]
 	print ("Total Pattern : ", n_patterns)
 
-	#x = tf.one_hot(datax, vocab)
-	#y = tf.one_hot(datay, vocab)
+	x = tf.one_hot(datax[40], sequence_len)
+	y = tf.one_hot(datay, 1)
 
 	
 		
-	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
-	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
+	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
-	for i, sentence in enumerate(datax):
-		for t, word in enumerate(sentence):
-			print word
-			x[i, t, word] = 1
+	# for i, sentence in enumerate(datax):
+	# 	for t, word in enumerate(sentence):
+	# 		print word
+	# 		x[i, t, word] = 1
 
-	for i, w in enumerate(datay):
-		y[i, w] = 1
+	# for i, w in enumerate(datay):
+	# 	y[i, w] = 1
 	print "Done"
 
 	return x, y
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
 #print (x.shape, '\n', y.shape)
-input()
 model = Sequential()
-model.add(Bidirectional(LSTM(256, return_sequences = True, activation = 'relu'), input_shape = (x.shape[1], x.shape[2])))
+model.add(Bidirectional(LSTM(256, return_sequences = True, activation = 'relu'), input_shape = (sequence_len, vocab)))
 model.add(Dropout(0.4))
-model.add(Dense(len(chars),activation = 'softmax'))
+model.add(Dense(vocab,activation = 'softmax'))
 model.summary()
 optimizer = RMSprop(lr=0.01)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
