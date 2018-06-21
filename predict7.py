@@ -68,6 +68,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 	# 	y[i, w] = 1
 	print "Done"
 
+	print (type(x))
+
 	return x, y
 
 x, y = get_sequence(rawtxt, chars, sequence_len)
