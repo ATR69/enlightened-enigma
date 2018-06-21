@@ -68,7 +68,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	# 	y[i, w] = 1
 	print "Done"
 
-	print (type(x))
+	print tf.shape(x), '\n', tf.shape(y)
 
 	return x, y
 
