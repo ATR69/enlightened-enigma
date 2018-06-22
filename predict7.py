@@ -25,12 +25,12 @@ vocab = len(chars)
 #print chars
 
 char_to_int = dict((c, i) for i, c in enumerate(chars))
-int_to_char = dict((c, i) for i, c in enumerate(chars))
+int_to_char = dict((i, c) for i, c in enumerate(chars))
 
 print"Unique Chars: ", vocab
 print "Raw Data: ", len(rawtxt)
 
-sequence_len = 40
+sequence_len = 50
 
 def get_sequence(rawtxt, chars, sequence_len):
 
@@ -40,7 +40,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for i in range(len(sentences)):
 
-		for j in range(0, len(sentences[i]) - 1, step):
+		for j in range(0, len(sentences[i]), step):
 
 			seq_in = sentences[i][:j]
 			seq_out = sentences[i][j]
@@ -51,24 +51,26 @@ def get_sequence(rawtxt, chars, sequence_len):
 	#print datax[4][5]
 	print ("Total Pattern : ", n_patterns)
 
-	x = tf.one_hot(datax[0], sequence_len)
-	y = tf.one_hot(datay, 1)
+	# x = tf.one_hot(datax[0], sequence_len)
+	# y = tf.one_hot(datay, 1)
 
 	
 		
-	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
-	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 
-	# for i, sentence in enumerate(datax):
-	# 	for t, word in enumerate(sentence):
-	# 		print word
-	# 		x[i, t, word] = 1
+	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
-	# for i, w in enumerate(datay):
-	# 	y[i, w] = 1
+	for i, sentence in enumerate(datax):
+
+		for t, word in enumerate(sentence):
+
+			x[i, t, word] = 1
+
+	for i, w in enumerate(datay):
+
+		y[i, w] = 1
+
 	print "Done"
-
-	print tf.shape(x), '\n', tf.shape(y)
 
 	return x, y
 
