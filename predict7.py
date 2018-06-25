@@ -77,16 +77,16 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
-
+y.reshape(y, (n, vocab, 1))
 
 model = Sequential()
-model.add(CuDNNGRU(256, input_shape=(sequence_len, vocab)))
+#model.add(CuDNNGRU(256, input_shape=(sequence_len, vocab)))
 #model.add(Embedding(sequence_len, vocab, input_shape=(n, sequence_len)))
-#model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape=(sequence_len, vocab)))
+model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape=(sequence_len, vocab)))
 #model.add(Dropout(0.2))
 #model.add(LSTM(128))
 model.add(Dropout(0.2))
-model.add(Dense(vocab, activation = 'softmax'))
+model.add(TimeDistributed(Dense(vocab, activation = 'softmax')))
 model.summary()
 #optimizer = RMSprop(lr=0.01)
 #model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
