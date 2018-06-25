@@ -80,9 +80,10 @@ print (x.shape, '\n', y.shape)
 
 
 model = Sequential()
-model.add(LSTM(256, input_shape=(sequence_len, vocab)))
-#model.add(Bidirectional(LSTM(256, return_sequences = True, activation = 'relu'), input_shape = (sequence_len, vocab)))
-#model.add(Dropout(0.4))
+#model.add(LSTM(256, input_shape=(sequence_len, vocab)))
+model.add(Embedding(vocabulary_size, embedding_dim, input_shape=(sequence_len, vocab)))
+model.add(Bidirectional(LSTM(256, return_sequences = True))
+model.add(Dropout(0.4))
 model.add(Dense(vocab, activation = 'softmax'))
 model.summary()
 #optimizer = RMSprop(lr=0.01)
