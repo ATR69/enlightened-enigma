@@ -73,15 +73,15 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	#print "Done"
 
-	return x, y
+	return x, y, n_patterns
 
-x, y = get_sequence(rawtxt, chars, sequence_len)
+x, y, n = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
 
 
 model = Sequential()
 #model.add(LSTM(256, input_shape=(sequence_len, vocab)))
-model.add(Embedding(sequence_len, vocab, input_shape=(n_patterns, sequence_len)))
+model.add(Embedding(sequence_len, vocab, input_shape=(n, sequence_len)))
 model.add(Bidirectional(LSTM(256, return_sequences = True)))
 model.add(Dropout(0.2))
 model.add(Dense(vocab, activation = 'softmax'))
