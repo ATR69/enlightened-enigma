@@ -100,7 +100,7 @@ callbacks_list = [checkpoint]
 for epoch in range(4):
 
 	x, y, n = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 5000, callbacks = callbacks_list, shuffle=True).history
+	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 100, callbacks = callbacks_list, shuffle=True).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
