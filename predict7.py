@@ -77,6 +77,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
+print n
 y.reshape(y, (n, vocab, 1))
 
 model = Sequential()
