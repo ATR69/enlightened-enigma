@@ -59,7 +59,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 		
 	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 
-	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	y = np.zeros((n_patterns, len(chars), 1), dtype=np.bool)
 
 	for i, sentence in enumerate(datax):
 
