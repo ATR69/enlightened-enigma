@@ -81,7 +81,7 @@ print (x.shape, '\n', y.shape)
 
 model = Sequential()
 #model.add(LSTM(256, input_shape=(sequence_len, vocab)))
-model.add(Embedding(vocabulary_size, embedding_dim, input_shape=(sequence_len, vocab)))
+model.add(Embedding(sequence_len, vocab, input_shape=(n_patterns, sequence_len)))
 model.add(Bidirectional(LSTM(256, return_sequences = True))
 model.add(Dropout(0.2))
 model.add(Dense(vocab, activation = 'softmax'))
