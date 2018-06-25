@@ -2,7 +2,7 @@ import sys
 import numpy as np
 import tensorflow as tf
 from keras.models import Sequential, load_model
-from keras.layers import LSTM, Dense, Dropout, Bidirectional
+from keras.layers import LSTM, Dense, Dropout, Bidirectional, Embedding
 from keras.layers import TimeDistributed
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint
