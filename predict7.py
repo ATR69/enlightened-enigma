@@ -22,8 +22,6 @@ sentences = rawtxt.split('\n')
 
 chars = sorted(list(set(rawtxt)))
 vocab = len(chars)
-print len(chars)
-input()
 
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((i, c) for i, c in enumerate(chars))
@@ -60,7 +58,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 		
 	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 
-	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	y = np.zeros((n_patterns, len(chars), 1), dtype=np.bool)
 
 	for i, sentence in enumerate(datax):
 
@@ -71,7 +69,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	for i, w in enumerate(datay):
 
 		#print w
-		y[i, w] = 1
+		y[i, w, 1] = 1
 
 	#print "Done"
 
