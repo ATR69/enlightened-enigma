@@ -22,7 +22,8 @@ sentences = rawtxt.split('\n')
 
 chars = sorted(list(set(rawtxt)))
 vocab = len(chars)
-#print chars
+print len(chars)
+input()
 
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((i, c) for i, c in enumerate(chars))
@@ -69,7 +70,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for i, w in enumerate(datay):
 
-		print w
+		#print w
 		y[i, w] = 1
 
 	#print "Done"
