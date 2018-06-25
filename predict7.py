@@ -58,7 +58,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 		
 	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 
-	y = np.zeros((n_patterns, len(chars), 1), dtype=np.bool)
+	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
 	for i, sentence in enumerate(datax):
 
@@ -69,7 +69,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 	for i, w in enumerate(datay):
 
 		#print w
-		y[i, w, 1] = 1
+		y[i, w] = 1
 
 	#print "Done"
 
@@ -77,9 +77,6 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
-
-y.reshape(y, (n, vocab, 1))
-input()
 
 model = Sequential()
 #model.add(CuDNNGRU(256, input_shape=(sequence_len, vocab)))
