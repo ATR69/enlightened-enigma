@@ -2,7 +2,7 @@ import sys
 import numpy as np
 import tensorflow as tf
 from keras.models import Sequential, load_model
-from keras.layers import LSTM, Dense, Dropout, Bidirectional, Embedding, GRU
+from keras.layers import LSTM, Dense, Dropout, Bidirectional, Embedding, GRU, CuDNNGRU
 from keras.layers import TimeDistributed
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint
@@ -80,7 +80,7 @@ print (x.shape, '\n', y.shape)
 
 
 model = Sequential()
-model.add(GRU(256, input_shape=(sequence_len, vocab)))
+model.add(CuDNNGRU(256, input_shape=(sequence_len, vocab)))
 #model.add(Embedding(sequence_len, vocab, input_shape=(n, sequence_len)))
 #model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape=(sequence_len, vocab)))
 #model.add(Dropout(0.2))
