@@ -69,6 +69,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for i, w in enumerate(datay):
 
+		print w
 		y[i, w, 1] = 1
 
 	#print "Done"
