@@ -69,7 +69,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for i, w in enumerate(datay):
 
-		y[i, w] = 1
+		y[i, w, 1] = 1
 
 	#print "Done"
 
@@ -77,8 +77,6 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 print (x.shape, '\n', y.shape)
-print n
-y.reshape(y, (n, vocab, 1))
 
 model = Sequential()
 #model.add(CuDNNGRU(256, input_shape=(sequence_len, vocab)))
