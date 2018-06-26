@@ -97,7 +97,7 @@ filepath = "wt-imp1.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
-for epoch in range(3):
+for epoch in range(2):
 
 	x, y, n = get_sequence(rawtxt, chars, sequence_len)
 	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 100, callbacks = callbacks_list, shuffle=True).history
