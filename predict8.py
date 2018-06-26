@@ -81,11 +81,11 @@ print (x.shape, '\n', y.shape)
 model = Sequential()
 #model.add(CuDNNGRU(256, input_shape=(sequence_len, vocab)))
 #model.add(Embedding(sequence_len, vocab, input_shape=(n, sequence_len)))
-#model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape=(sequence_len, vocab)))
-#model.add(Dropout(0.2))
-#model.add(LSTM(128))
+model.add(Bidirectional(LSTM(256, return_sequences = True), input_shape=(sequence_len, vocab)))
+model.add(Dropout(0.2))
+model.add(Bidirectional(LSTM(128))
 #model.add(TimeDistributed(Dense(vocab, activation = 'softmax')))
-model.add(GRU(256, input_shape=(sequence_len, vocab)))
+#model.add(GRU(256, input_shape=(sequence_len, vocab)))
 model.add(Dropout(0.2))
 model.add(Dense(vocab, activation = 'softmax'))
 model.summary()
@@ -100,7 +100,7 @@ callbacks_list = [checkpoint]
 for epoch in range(1):
 
 	x, y, n = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 50, callbacks = callbacks_list, shuffle=True).history
+	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 500, callbacks = callbacks_list, shuffle=True).history
 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model2.h5')
