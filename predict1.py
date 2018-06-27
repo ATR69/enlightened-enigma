@@ -34,6 +34,10 @@ for data in datas:
 
 print('num training examples: ',len(sentences))
 
+print sentences.shape, '\n', next_chars.shape, '\n'
+print type(sentences)
+input()
+
 x = np_utils.to_categorical(sentences)
 y = np_utils.to_categorical(next_chars)
 
