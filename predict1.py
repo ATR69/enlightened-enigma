@@ -30,8 +30,8 @@ for data in datas:
 
 	for i in range(0,len(data),3):
 
-		sentences.append(char_to_int(data[:i]))
-		next_chars.append(char_to_int(data[i]))
+		sentences.append([char_to_int[char] for char in data[:i]])
+		next_chars.append([char_to_int[data[i]]])
 
 print('num training examples: ',len(sentences))
 
