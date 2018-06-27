@@ -1,0 +1,55 @@
+import numpy as np
+from keras.models import Sequential, load_model
+from keras.layers import LSTM, Dense, Dropout, GRU
+from keras.utils import np_utils
+from keras.callbacks import ModelCheckpoint
+from keras.optimizers import RMSprop
+import pickle
+import heapq
+
+path = "new_cup.txt"
+rawtxt = open(path).read().lower()
+datas = rawtxt.split('\n')
+
+chars = sorted(list(set(rawtxt)))
+vocab = len(chars)
+
+char_to_int = dict((c, i) for i, c in enumerate(chars))
+int_to_char = dict((i, c) for i, c in enumerate(chars))
+
+sentences = []
+next_chars = []
+
+for data in datas:
+
+	if len(list(data)) > 30:
+
+		#print data
+		continue
+
+	for i in range(0,len(data),3):
+
+		sentences.append(data[:i])
+		next_chars.append(data[i])
+
+print('num training examples: ',len(sentences))
+
+x = np_utils.to_categorical(sentences)
+y = np_utils.to_categorical(next_chars)
+
+model = Sequential()
+model.add(GRU(128, input_shape=(sequence_len, vocab)))
+#model.add(Dropout(0.2))
+model.add(Dense(vocab, activation = 'softmax'))
+optimizer = RMSprop(lr=0.01)
+model.compile(loss = 'categorical_crossentropy', optimizer = optimizer, metrics = ['accuracy'])
+#model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+
+filepath = "wt-imp1.hdf5"
+checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
+callbacks_list = [checkpoint]
+
+history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 10000, callbacks = callbacks_list, shuffle=True).history
+
+model.save('keras_model3.h5')
+pickle.dump(history, open("history3.p", "wb"))
