@@ -99,7 +99,7 @@ callbacks_list = [checkpoint]
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 
-history = model.fit(x, y, epochs = 10, validation_split = 0.1,  batch_size = 15000, callbacks = callbacks_list, shuffle=True).history
+history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 10, callbacks = callbacks_list, shuffle=True).history
 
 # for epoch in range(2):
 
