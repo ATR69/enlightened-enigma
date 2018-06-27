@@ -1,4 +1,3 @@
-import sys
 import numpy as np
 import tensorflow as tf
 from keras.models import Sequential, load_model
@@ -6,7 +5,6 @@ from keras.layers import LSTM, Dense, Dropout, Bidirectional, Embedding, GRU, Cu
 from keras.layers import TimeDistributed
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint
-from keras.preprocessing.sequence import pad_sequences
 from keras.optimizers import RMSprop
 from keras.preprocessing.text import one_hot
 import pickle
@@ -75,8 +73,8 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	return x, y, n_patterns
 
-x, y, n = get_sequence(rawtxt, chars, sequence_len)
-print (x.shape, '\n', y.shape)
+#x, y, n = get_sequence(rawtxt, chars, sequence_len)
+#print (x.shape, '\n', y.shape)
 
 model = Sequential()
 #model.add(CuDNNGRU(256, input_shape=(sequence_len, vocab)))
@@ -99,11 +97,13 @@ filepath = "wt-imp1.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
-for epoch in range(2):
+history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 15000, callbacks = callbacks_list, shuffle=True).history
 
-	x, y, n = get_sequence(rawtxt, chars, sequence_len)
-	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 10000, callbacks = callbacks_list, shuffle=True).history
-	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
+# for epoch in range(2):
+
+# 	x, y, n = get_sequence(rawtxt, chars, sequence_len)
+# 	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 10000, callbacks = callbacks_list, shuffle=True).history
+# 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
 model.save('keras_model1.h5')
 pickle.dump(history, open("history1.p", "wb"))
