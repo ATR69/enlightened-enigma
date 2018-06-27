@@ -25,7 +25,7 @@ char_to_int = dict((c, i) for i, c in enumerate(chars))
 int_to_char = dict((i, c) for i, c in enumerate(chars))
 
 print"Unique Chars: ", vocab
-print "Raw Data: ", len(rawtxt)
+#print "Raw Data: ", len(rawtxt)
 
 sequence_len = 60
 
@@ -99,7 +99,7 @@ callbacks_list = [checkpoint]
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 
-history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 500, callbacks = callbacks_list, shuffle=True).history
+history = model.fit(x, y, epochs = 2, validation_split = 0.1,  batch_size = 500, callbacks = callbacks_list, shuffle=True).history
 
 # for epoch in range(2):
 
