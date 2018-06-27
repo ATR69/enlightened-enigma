@@ -73,7 +73,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	return x, y, n_patterns
 
-#x, y, n = get_sequence(rawtxt, chars, sequence_len)
+x, y, n = get_sequence(rawtxt, chars, sequence_len)
 #print (x.shape, '\n', y.shape)
 
 model = Sequential()
@@ -96,6 +96,8 @@ model.compile(loss = 'categorical_crossentropy', optimizer = optimizer, metrics 
 filepath = "wt-imp1.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
+
+x, y, n = get_sequence(rawtxt, chars, sequence_len)
 
 history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 15000, callbacks = callbacks_list, shuffle=True).history
 
