@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 from keras.models import Sequential, load_model
 from keras.layers import LSTM, Dense, Dropout, GRU
 from keras.utils import np_utils
@@ -34,12 +35,12 @@ for data in datas:
 
 print('num training examples: ',len(sentences))
 
-print sentences.shape, '\n', next_chars.shape, '\n'
-print type(sentences)
-input()
+#print sentences.shape, '\n', next_chars.shape, '\n'
+#print type(sentences)
+#input()
 
-x = np_utils.to_categorical(sentences)
-y = np_utils.to_categorical(next_chars)
+x = tf.one_hot(sentences)
+y = tf.one_hot(next_chars)
 
 model = Sequential()
 model.add(GRU(128, input_shape=(sequence_len, vocab)))
