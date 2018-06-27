@@ -39,8 +39,11 @@ print('num training examples: ',len(sentences))
 #print type(sentences)
 #input()
 
-x = tf.one_hot(sentences)
-y = tf.one_hot(next_chars)
+x = tf.one_hot(sentences, depth = vocab)
+y = tf.one_hot(next_chars, depth = vocab)
+
+print x.shape, '\n', y.shape
+
 
 model = Sequential()
 model.add(GRU(128, input_shape=(sequence_len, vocab)))
