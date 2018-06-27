@@ -1,3 +1,4 @@
+import pickle
 import numpy as np
 import tensorflow as tf
 from keras.models import Sequential, load_model
@@ -5,8 +6,7 @@ from keras.layers import LSTM, Dense, Dropout, GRU
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint
 from keras.optimizers import RMSprop
-import pickle
-import heapq
+from keras.preprocessing.text import one_hot
 
 path = "new_cup.txt"
 rawtxt = open(path).read().lower()
@@ -30,8 +30,8 @@ for data in datas:
 
 	for i in range(0,len(data),3):
 
-		sentences.append([char_to_int[char] for char in data[:i]])
-		next_chars.append([char_to_int[data[i]]])
+		sentences.append(data[:i])
+		next_chars.append(data[i])
 
 print('num training examples: ',len(sentences))
 
@@ -39,8 +39,11 @@ print('num training examples: ',len(sentences))
 #print type(sentences)
 #input()
 
-x = tf.one_hot(sentences, depth = vocab)
-y = tf.one_hot(next_chars, depth = vocab)
+# x = tf.one_hot(sentences, depth = vocab)
+# y = tf.one_hot(next_chars, depth = vocab)
+
+x = one_hot(sentences, vocab)
+y = one_hot(next_chars, vocab)
 
 print x.shape, '\n', y.shape
 
