@@ -42,8 +42,8 @@ print('num training examples: ',len(sentences))
 # x = tf.one_hot(sentences, depth = vocab)
 # y = tf.one_hot(next_chars, depth = vocab)
 
-x = one_hot(sentences, vocab)
-y = one_hot(next_chars, vocab)
+x = one_hot(sentences, vocab, split = True)
+y = one_hot(next_chars, vocab, split = True)
 
 print x.shape, '\n', y.shape
 
