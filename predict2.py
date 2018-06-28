@@ -23,7 +23,7 @@ chars = sorted(list(set(text)))
 char_indices = dict((c, i) for i, c in enumerate(chars))
 indices_char = dict((i, c) for i, c in enumerate(chars))
 
-print(f'unique chars: {len(chars)}')
+print 'unique chars:', len(chars)
 
 SEQUENCE_LENGTH = 60
 step = 3
