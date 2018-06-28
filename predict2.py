@@ -48,8 +48,8 @@ model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['ac
 
 history = model.fit(X, y, validation_split=0.05, batch_size=200, epochs=2, shuffle=True).history
 
-model.save('keras_model.h5')
-pickle.dump(history, open("history.p", "wb"))
+model.save('keras_model2.h5')
+pickle.dump(history, open("history2.p", "wb"))
 
-model = load_model('keras_model.h5')
-history = pickle.load(open("history.p", "rb"))
+model = load_model('keras_model2.h5')
+history = pickle.load(open("history2.p", "rb"))

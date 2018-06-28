@@ -89,7 +89,7 @@ model.summary()
 # model.compile(loss = 'categorical_crossentropy', optimizer = optimizer, metrics = ['accuracy'])
 model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
-filepath = "wt-imp1.hdf5"
+filepath = "wt-imp2.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
