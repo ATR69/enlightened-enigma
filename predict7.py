@@ -46,30 +46,26 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	n_patterns = len(datax)
 
-	#print datax[4][5]
-	#print ("Total Pattern : ", n_patterns)
+	x = np_utils.to_categorical(datax)
+	y = np_utils.to_categorical(datay)
 
-	# x = tf.one_hot(datax[40], sequence_len)
-	# y = tf.one_hot(datay, 1)
-
-	
 		
-	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
+	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 
-	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
-	for i, sentence in enumerate(datax):
+	# for i, sentence in enumerate(datax):
 
-		for t, word in enumerate(sentence):
+	# 	for t, word in enumerate(sentence):
 
-			x[i, t, word] = 1
+	# 		x[i, t, word] = 1
 
-	for i, w in enumerate(datay):
+	# for i, w in enumerate(datay):
 
-		#print w
-		y[i, w] = 1
+	# 	#print w
+	# 	y[i, w] = 1
 
-	#print "Done"
+
 
 	return x, y, n_patterns
 
@@ -99,7 +95,7 @@ callbacks_list = [checkpoint]
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 
-history = model.fit(x, y, epochs = 2, validation_split = 0.1,  batch_size = 500, callbacks = callbacks_list, shuffle=True).history
+history = model.fit(x, y, epochs = 2, validation_split = 0.1,  batch_size = 15000, callbacks = callbacks_list, shuffle=True).history
 
 # for epoch in range(2):
 
