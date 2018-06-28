@@ -15,7 +15,7 @@ import heapq
 import seaborn as sns
 from pylab import rcParams
 
-path = "new_cup.txt"
+path = "i.txt"
 text = open(path).read().lower()
 print 'corpus length:', len(text)
 
@@ -25,7 +25,7 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 print 'unique chars:', len(chars)
 
-SEQUENCE_LENGTH = 60
+SEQUENCE_LENGTH = 30
 step = 3
 sentences = []
 next_chars = []
@@ -51,7 +51,7 @@ model.add(Activation('softmax'))
 optimizer = RMSprop(lr=0.01)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-history = model.fit(X, y, validation_split=0.05, batch_size=128, epochs=20, shuffle=True).history
+history = model.fit(X, y, validation_split=0.05, batch_size=200, epochs=2, shuffle=True).history
 
 model.save('keras_model.h5')
 pickle.dump(history, open("history.p", "wb"))
