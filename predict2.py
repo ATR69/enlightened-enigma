@@ -33,7 +33,7 @@ next_chars = []
 for i in range(0, len(text) - SEQUENCE_LENGTH, step):
     sentences.append(text[i: i + SEQUENCE_LENGTH])
     next_chars.append(text[i + SEQUENCE_LENGTH])
-print(f'num training examples: {len(sentences)}')
+print 'num training examples: ', len(sentences)
 
 X = np.zeros((len(sentences), SEQUENCE_LENGTH, len(chars)), dtype=np.bool)
 y = np.zeros((len(sentences), len(chars)), dtype=np.bool)
