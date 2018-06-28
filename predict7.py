@@ -46,24 +46,24 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	n_patterns = len(datax)
 
-	x = np_utils.to_categorical(datax)
-	y = np_utils.to_categorical(datay)
+	# x = np_utils.to_categorical(datax)
+	# y = np_utils.to_categorical(datay)
 
 		
-	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
+	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 
-	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
-	# for i, sentence in enumerate(datax):
+	for i, sentence in enumerate(datax):
 
-	# 	for t, word in enumerate(sentence):
+		for t, word in enumerate(sentence):
 
-	# 		x[i, t, word] = 1
+			x[i, t, word] = 1
 
-	# for i, w in enumerate(datay):
+	for i, w in enumerate(datay):
 
-	# 	#print w
-	# 	y[i, w] = 1
+		#print w
+		y[i, w] = 1
 
 
 
