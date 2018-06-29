@@ -27,7 +27,7 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 print"Unique Chars: ", vocab
 #print "Raw Data: ", len(rawtxt)
 
-sequence_len = 60
+sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 

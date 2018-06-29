@@ -20,7 +20,7 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 print 'unique chars:', len(chars)
 
 SEQUENCE_LENGTH = 30
-step = 3
+step = 2
 sentences = []
 next_chars = []
 
