@@ -87,7 +87,7 @@ model.add(Dense(vocab, activation = 'softmax'))
 model.summary()
 # optimizer = RMSprop(lr=0.01)
 # model.compile(loss = 'categorical_crossentropy', optimizer = optimizer, metrics = ['accuracy'])
-model.compile(loss = 'categorical_crossentropy', optimizer = 'Adadelta', metrics = ['accuracy'])
+model.compile(loss = 'categorical_crossentropy', optimizer = 'Nadam', metrics = ['accuracy'])
 
 filepath = "wt-imp2.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
