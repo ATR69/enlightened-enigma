@@ -87,7 +87,7 @@ model.add(Dense(vocab, activation = 'softmax'))
 model.summary()
 # optimizer = RMSprop(lr=0.01)
 # model.compile(loss = 'categorical_crossentropy', optimizer = optimizer, metrics = ['accuracy'])
-model.compile(loss = 'categorical_crossentropy', optimizer = 'adagrad', metrics = ['accuracy'])
+model.compile(loss = 'categorical_crossentropy', optimizer = 'Adadelta', metrics = ['accuracy'])
 
 filepath = "wt-imp2.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
@@ -95,7 +95,7 @@ callbacks_list = [checkpoint]
 
 x, y, n = get_sequence(rawtxt, chars, sequence_len)
 
-history = model.fit(x, y, epochs = 5, validation_split = 0.1,  batch_size = 10000, callbacks = callbacks_list, shuffle=True).history
+history = model.fit(x, y, epochs = 2, validation_split = 0.1,  batch_size = 200, callbacks = callbacks_list, shuffle=True).history
 
 # for epoch in range(2):
 
