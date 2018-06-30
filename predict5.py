@@ -40,28 +40,30 @@ def get_sequence(rawtxt, chars, sequence_len):
 			sentences.append(data[:i])
 			next_chars.append(data[i])
 
-	print('num training examples: ',len(sentences))
+	n_patterns = len(sentences)
 
-	x = one_hot(sentences, vocab)
-	y = one_hot(next_chars,vocab)
+	print('num training examples: ',n_patterns
+
+	# x = one_hot(sentences, vocab)
+	# y = one_hot(next_chars,vocab)
 
 	# x = np_utils.to_categorical(sentences)
 	# y = np_utils.to_categorical(next_chars)
 
 		
-	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
+	x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
 
-	# y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
+	y = np.zeros((n_patterns, len(chars)), dtype=np.bool)
 
-	# for i, sentence in enumerate(datax):
+	for i, sentence in enumerate(sentences):
 
-	# 	for t, word in enumerate(sentence):
+		for t, word in enumerate(sentence):
 
-	# 		x[i, t, word] = 1
+			x[i, t, word] = 1
 
-	# for i, w in enumerate(datay):
+	for i, w in enumerate(next_chars):
 
-	# 	y[i, w] = 1
+		y[i, w] = 1
 
 
 
