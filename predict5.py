@@ -37,7 +37,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 			for i in range(0, len(data), 2):
 
-				#print len(data)
+				print len(data)
 				sentences.append(data[:i])
 				next_chars.append(data[i])
 
