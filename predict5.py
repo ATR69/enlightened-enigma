@@ -35,11 +35,11 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 			continue
 
-		for i in range(0, len(data), 2):
+			for i in range(0, len(data), 2):
 
-			print len(data)
-			sentences.append(data[:i])
-			next_chars.append(data[i])
+				#print len(data)
+				sentences.append(data[:i])
+				next_chars.append(data[i])
 
 	n_patterns = len(sentences)
 
