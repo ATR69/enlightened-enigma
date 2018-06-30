@@ -46,7 +46,7 @@ model.summary()
 #optimizer = RMSprop(lr=0.01)
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-history = model.fit(X, y, validation_split=0.1, batch_size=128, epochs=20, shuffle=True).history
+history = model.fit(X, y, validation_split=0.1, batch_size=128, epochs=5, shuffle=True).history
 
 model.save('keras_model2.h5')
 pickle.dump(history, open("history2.p", "wb"))
