@@ -42,7 +42,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	n_patterns = len(sentences)
 
-	print('num training examples: ',n_patterns
+	print 'num training examples: ',n_patterns
 
 	# x = one_hot(sentences, vocab)
 	# y = one_hot(next_chars,vocab)
