@@ -42,8 +42,11 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	print('num training examples: ',len(sentences))
 
-	x = np_utils.to_categorical(sentences)
-	y = np_utils.to_categorical(next_chars)
+	x = one_hot(sentences)
+	y = one_hot(next_chars)
+
+	# x = np_utils.to_categorical(sentences)
+	# y = np_utils.to_categorical(next_chars)
 
 		
 	# x = np.zeros((n_patterns, sequence_len, len(chars)), dtype=np.bool)
