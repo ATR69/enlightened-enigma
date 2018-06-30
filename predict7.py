@@ -11,7 +11,7 @@ import pickle
 import heapq
 
 np.random.seed(47)
-path = "i.txt"
+path = "in.txt"
 rawtxt = open(path).read().lower()
 sentences = rawtxt.split('\n')
 
