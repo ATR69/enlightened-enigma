@@ -10,9 +10,9 @@ np.random.seed(47)
 model = load_model('keras_model2.h5')
 history = pickle.load(open("history2.p", "rb"))
 
-sequence_len = 30
+sequence_len = 17
 
-path = "new_cup.txt"
+path = "in.txt"
 rawtxt = open(path).read().lower()
 
 chars = sorted(list(set(rawtxt)))

@@ -27,7 +27,7 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 print"Unique Chars: ", vocab
 #print "Raw Data: ", len(rawtxt)
 
-sequence_len = 30
+sequence_len = 17
 
 def get_sequence(rawtxt, chars, sequence_len):
 
@@ -84,10 +84,10 @@ model.add(GRU(128, input_shape=(sequence_len, vocab)))
 # model.add(GRU(64))
 # model.add(Dropout(0.2))
 model.add(Dense(vocab, activation = 'softmax'))
-model.summary()
+#model.summary()
 # optimizer = RMSprop(lr=0.01)
 # model.compile(loss = 'categorical_crossentropy', optimizer = optimizer, metrics = ['accuracy'])
-model.compile(loss = 'categorical_crossentropy', optimizer = 'Nadam', metrics = ['accuracy'])
+model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
 filepath = "wt-imp2.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')

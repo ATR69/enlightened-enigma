@@ -10,7 +10,7 @@ np.random.seed(47)
 model = load_model('keras_model4.h5')
 history = pickle.load(open("history4.p", "rb"))
 
-sequence_len = 30
+sequence_len = 17
 
 path = "in.txt"
 rawtxt = open(path).read().lower()
@@ -27,7 +27,7 @@ def prepare_input(text):
     return x
 	
 
-def sample(preds, top_n=3):
+def sample(preds, top_n=2):
     preds = np.asarray(preds).astype('float64')
     preds = np.log(preds)
     exp_preds = np.exp(preds)
