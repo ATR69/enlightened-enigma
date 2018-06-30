@@ -7,8 +7,8 @@ import heapq
 np.random.seed(47)
 
 
-model = load_model('keras_model2.h5')
-history = pickle.load(open("history2.p", "rb"))
+model = load_model('keras_model7.h5')
+history = pickle.load(open("history7.p", "rb"))
 
 sequence_len = 30
 
@@ -27,7 +27,7 @@ def prepare_input(text):
     return x
 	
 
-def sample(preds, top_n=3):
+def sample(preds, top_n = 3):
     preds = np.asarray(preds).astype('float64')
     preds = np.log(preds)
     exp_preds = np.exp(preds)
@@ -45,10 +45,10 @@ def predict_completion(text):
         print "Text : ", text
         x = prepare_input(text)
         preds = model.predict(x, verbose=0)[0]
-        print "Pred: ", preds
+        #print "Pred: ", preds
         next_index = sample(preds, top_n=1)[0]
         next_char = int_to_char[next_index]
-        print "Next Char: ", next_char
+        #print "Next Char: ", next_char
         text = text[1:] + next_char
         completion += next_char
         #print len(original_text), '-', len(completion), '-', len(original_text+completion)

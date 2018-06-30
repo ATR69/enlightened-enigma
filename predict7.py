@@ -11,7 +11,7 @@ import pickle
 import heapq
 
 np.random.seed(47)
-path = "in.txt"
+path = "i.txt"
 rawtxt = open(path).read().lower()
 sentences = rawtxt.split('\n')
 
@@ -27,7 +27,7 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 print"Unique Chars: ", vocab
 #print "Raw Data: ", len(rawtxt)
 
-sequence_len = 17
+sequence_len = 30
 
 def get_sequence(rawtxt, chars, sequence_len):
 
@@ -89,7 +89,7 @@ model.add(Dense(vocab, activation = 'softmax'))
 # model.compile(loss = 'categorical_crossentropy', optimizer = optimizer, metrics = ['accuracy'])
 model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
-filepath = "wt-imp2.hdf5"
+filepath = "wt-imp7.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor = 'loss', verbose = 1, save_best_only = True, mode = 'min')
 callbacks_list = [checkpoint]
 
@@ -103,5 +103,5 @@ history = model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 500
 # 	history = model.fit(x, y, epochs = 1, validation_split = 0.1,  batch_size = 10000, callbacks = callbacks_list, shuffle=True).history
 # 	#model.fit(x, y, epochs = 1, validation_split = 0.05,  batch_size = 20, callbacks = callbacks_list)
 
-model.save('keras_model4.h5')
-pickle.dump(history, open("history4.p", "wb"))
+model.save('keras_model7.h5')
+pickle.dump(history, open("history7.p", "wb"))

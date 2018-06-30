@@ -12,7 +12,7 @@ history = pickle.load(open("history4.p", "rb"))
 
 sequence_len = 17
 
-path = "in.txt"
+path = "in1.txt"
 rawtxt = open(path).read().lower()
 
 chars = sorted(list(set(rawtxt)))
