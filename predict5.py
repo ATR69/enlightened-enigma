@@ -31,9 +31,10 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 	for data in datas:
 
-		print len(list(data))
+		
 		if len(list(data)) > 6:
 
+			print "continue"
 			continue
 
 			for i in range(0, len(data), 2):
