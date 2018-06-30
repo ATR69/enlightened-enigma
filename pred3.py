@@ -12,7 +12,7 @@ history = pickle.load(open("history4.p", "rb"))
 
 sequence_len = 30
 
-path = "new_cup.txt"
+path = "in.txt"
 rawtxt = open(path).read().lower()
 
 chars = sorted(list(set(rawtxt)))
@@ -21,7 +21,7 @@ int_to_char = dict((i, c) for i, c in enumerate(chars))
 
 def prepare_input(text):
 
-    x = np.zeros((1, sequence_len, len(int_to_char)))
+    x = np.zeros((1, sequence_len, len(chars)))
     for t, char in enumerate(text):
         x[0, t, char_to_int[char]] = 1.        
     return x
