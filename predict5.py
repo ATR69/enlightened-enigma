@@ -25,7 +25,7 @@ sequence_len = 17
 
 def get_sequence(rawtxt, chars, sequence_len):
 
-	datas=text.split("~")
+	datas=rawtxt.split("~")
 	sentences = []
 	next_chars = []
 
