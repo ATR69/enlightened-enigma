@@ -33,7 +33,7 @@ def get_sequence(rawtxt, chars, sequence_len):
 
 		if len(list(data)) > 6:
 
-			#print data
+			print data
 			continue
 
 		for i in range(0, len(data), 2):
