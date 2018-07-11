@@ -5,7 +5,6 @@ from keras.preprocessing.text import one_hot
 
 
 path = "in1.txt"
-z=0
 rawtxt = open(path).read().lower()
 sentences = rawtxt.split('\n')
 

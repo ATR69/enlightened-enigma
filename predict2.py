@@ -9,7 +9,7 @@ from keras.optimizers import RMSprop
 import pickle
 
 
-path = "i.txt"
+path = "in1.txt"
 text = open(path).read().lower()
 print 'corpus length:', len(text)
 
@@ -19,7 +19,7 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 print 'unique chars:', len(chars)
 
-SEQUENCE_LENGTH = 30
+SEQUENCE_LENGTH = 17
 step = 2
 sentences = []
 next_chars = []
