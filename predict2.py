@@ -20,7 +20,7 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 print 'unique chars:', len(chars)
 
 SEQUENCE_LENGTH = 30
-step = 3
+step = 2
 sentences = []
 next_chars = []
 
@@ -46,7 +46,7 @@ model.summary()
 optimizer = RMSprop(lr=0.01)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-history = model.fit(X, y, validation_split=0.1, batch_size=500, epochs=5, shuffle=True).history
+history = model.fit(X, y, validation_split=0.1, batch_size=500, epochs=10, shuffle=True).history
 
 model.save('keras_model2.h5')
 pickle.dump(history, open("history2.p", "wb"))
