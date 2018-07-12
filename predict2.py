@@ -38,15 +38,15 @@ for i, sentence in enumerate(sentences):
     y[i, char_indices[next_chars[i]]] = 1
 
 model = Sequential()
-model.add(LSTM(128, input_shape=(SEQUENCE_LENGTH, len(chars))))
+model.add(LSTM(256, input_shape=(SEQUENCE_LENGTH, len(chars))))
 model.add(Dense(len(chars)))
 model.add(Activation('softmax'))
 model.summary()
 
-#optimizer = RMSprop(lr=0.01)
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+optimizer = RMSprop(lr=0.01)
+model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-history = model.fit(X, y, validation_split=0.1, batch_size=500, epochs=2, shuffle=True).history
+history = model.fit(X, y, validation_split=0.1, batch_size=500, epochs=5, shuffle=True).history
 
 model.save('keras_model2.h5')
 pickle.dump(history, open("history2.p", "wb"))
