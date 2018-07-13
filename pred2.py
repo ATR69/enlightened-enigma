@@ -83,7 +83,7 @@ def predict_completions(text, n=3):
 q=sys.argv[1:]
 q=" ".join(q)
 #q="1 ch"
-seq = q.lower()
+seq = q[:40].lower()
 print seq
 print(predict_completions(seq, 5))
 print()
