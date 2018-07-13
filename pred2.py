@@ -12,7 +12,7 @@ history = pickle.load(open("history2.p", "rb"))
 
 sequence_len = 40
 
-path = "cook.txt"
+path = "BGAE.txt"
 rawtxt = open(path).read().lower()
 
 chars = sorted(list(set(rawtxt)))

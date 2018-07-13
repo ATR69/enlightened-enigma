@@ -9,7 +9,7 @@ from keras.optimizers import RMSprop
 import pickle
 
 
-path = "cook.txt"
+path = "BGAE.txt"
 text = open(path).read().lower()
 print 'corpus length:', len(text)
 
