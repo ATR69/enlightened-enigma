@@ -9,7 +9,7 @@ from keras.optimizers import RMSprop
 import pickle
 
 
-path = "new_file.txt"
+path = "cook.txt"
 text = open(path).read().lower()
 print 'corpus length:', len(text)
 
@@ -19,8 +19,8 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 print 'unique chars:', len(chars)
 
-SEQUENCE_LENGTH = 30
-step = 2
+SEQUENCE_LENGTH = 40
+step = 3
 sentences = []
 next_chars = []
 
@@ -38,7 +38,7 @@ for i, sentence in enumerate(sentences):
     y[i, char_indices[next_chars[i]]] = 1
 
 model = Sequential()
-model.add(LSTM(256, input_shape=(SEQUENCE_LENGTH, len(chars))))
+model.add(LSTM(128, input_shape=(SEQUENCE_LENGTH, len(chars))))
 model.add(Dense(len(chars)))
 model.add(Activation('softmax'))
 model.summary()
@@ -46,7 +46,7 @@ model.summary()
 optimizer = RMSprop(lr=0.01)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-history = model.fit(X, y, validation_split=0.1, batch_size=500, epochs=10, shuffle=True).history
+history = model.fit(X, y, validation_split=0.05, batch_size=128, epochs=20, shuffle=True).history
 
 model.save('keras_model2.h5')
 pickle.dump(history, open("history2.p", "wb"))
