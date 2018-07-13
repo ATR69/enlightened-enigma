@@ -85,9 +85,11 @@ q=" ".join(q)
 #q="1 ch"
 seq = q.lower()
 print seq
-res = predict_completions(seq, 3)
-ret=[]
-for i in res:
-    k=q+i
-    ret.append(k)
-print ret
+print(predict_completions(seq, 5))
+print()
+# res = predict_completions(seq, 5)
+# ret=[]
+# for i in res:
+#     k=q+i
+#     ret.append(k)
+# print ret
